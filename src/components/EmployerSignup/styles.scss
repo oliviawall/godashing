@@ -1,13 +1,13 @@
-.signin {
+.signup {
     display: block;
     width: 100%;
     max-width: 40.0rem;
     margin: 4rem auto 6rem;
     border: 1px solid black;
-  
+
     .wrap {
         padding: 10px;
-  
+
         h2 {
             font-size: 2.2rem;
             line-height: 1;
@@ -20,8 +20,9 @@
             margin: 0 auto;
         }
         
-        .socialSignin {
-            margin: 3rem auto 0;
-        }
-    }
+     .formWrap {
+         margin: 3rem;
+
+     }
   }
+}

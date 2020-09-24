@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-// import Signup from './../../components/SignUp';
+import EmployeeSignup from './../../components/EmployeeSignup';
+import './styles.scss'; 
 
-import './styles.scss';
+const Personal = props => {
 
-class Personal extends Component {
-
-    render() {
-        return (
-            <div>
-                <h1>
-                    Personal Registration
-                </h1>
-            </div>
-        // <Signup />
-        )
-    }
-}
-
+        return <EmployeeSignup />;
+    };
+    
 export default Personal;
  

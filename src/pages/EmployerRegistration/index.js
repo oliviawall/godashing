@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-// import Signup from './../../components/SignUp';
+import EmployerSignup from './../../components/EmployerSignup';
+import './styles.scss'; 
 
-import './styles.scss';
+const Business = props => {
 
-class Business extends Component {
-
-    render() {
-        return (
-            <div>
-                <h1>
-                    Business Registration
-                </h1>
-            </div>
-        // <Signup />
-        )
-    }
-}
-
+        return <EmployerSignup />;
+    };
+    
 export default Business;
+ 
