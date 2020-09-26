@@ -23,7 +23,7 @@ class EmployeeSignup extends Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
-
+  
     handleChange(e) {
         const { name, value } = e.target;
 
@@ -34,7 +34,7 @@ class EmployeeSignup extends Component {
 
     handleFormSubmit = async event => {
         event.preventDefault();
-        const { displayName, email, password, confirmPassword, errors } = this.state;
+        const { displayName, email, password, confirmPassword } = this.state;
 
         if (password !== confirmPassword) {
             const err = ['Password Don\'t match'];
@@ -42,7 +42,7 @@ class EmployeeSignup extends Component {
                  errors: err
             });
             return;
-          }
+          } 
 
         try {
 
@@ -61,10 +61,11 @@ class EmployeeSignup extends Component {
 
     render() {
         const { displayName, email, password, confirmPassword, errors } = this.state;
+        
         return (
             <div className='signup'>
                 <div className='wrap'>
-                    <h2>
+                    <h2> 
                         Signup
                    </h2>
 

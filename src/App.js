@@ -5,8 +5,8 @@ import './default.scss';
 
 // components //
 
-import Header from './components/Header';
-import Footer from './components/Footer';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
 
 // layouts //
 
@@ -16,6 +16,7 @@ import HomepageLayout from './layouts/HomepageLayout';
 // pages //
 
 import Homepage from './pages/Homepage';
+import About from './pages/About';
 import EmployeeRegistration from './pages/EmployeeRegistration';
 import EmployerRegistration from './pages/EmployerRegistration';
 import Login from './pages/Login';
@@ -69,12 +70,12 @@ class App extends Component {
               <Homepage />
             </HomepageLayout>
           )} />
-          <Route path='/employeeregistration' render={() => (
+          <Route path='/employeeregistration' render={() => currentUser ? <Redirect to='/' /> : (
             <MainLayout currentUser={currentUser}>
               <EmployeeRegistration />
             </MainLayout>
           )} />
-          <Route path='/employerregistration' render={() => (
+          <Route path='/employerregistration' render={() => currentUser ? <Redirect to='/' /> : (
             <MainLayout currentUser={currentUser}>
               <EmployerRegistration />
             </MainLayout>
@@ -85,6 +86,12 @@ class App extends Component {
               <Login />
             </MainLayout>
           )} />
+          <Route path='/about'
+        render={() => (
+          <MainLayout>
+            <About />
+          </MainLayout>
+        )} />
         </Switch>
       </div>
 
