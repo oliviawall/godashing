@@ -20,6 +20,7 @@ import About from './pages/About';
 import EmployeeRegistration from './pages/EmployeeRegistration';
 import EmployerRegistration from './pages/EmployerRegistration';
 import Login from './pages/Login';
+import Recovery from './pages/Recovery';
 
 const initialState = {
   currentUser: null
@@ -90,6 +91,11 @@ class App extends Component {
         render={() => (
           <MainLayout>
             <About />
+          </MainLayout>
+        )} />
+          <Route path='/recovery' render={() => (
+          <MainLayout>
+            <Recovery />
           </MainLayout>
         )} />
         </Switch>
