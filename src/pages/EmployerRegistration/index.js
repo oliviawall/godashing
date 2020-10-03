@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EmployerSignup from './../../components/EmployerSignup';
 import './styles.scss'; 
 

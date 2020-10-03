@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import './styles.scss';
 
 import { auth, handleUserProfile } from './../../firebase/utils';
@@ -37,7 +38,7 @@ const handleFormSubmit = async event => {
 
         await handleUserProfile(user, { displayName });
         reset();
-        
+        props.history.push('/');
 
     } catch (err) {
         // console.log(err);
@@ -110,4 +111,4 @@ const handleFormSubmit = async event => {
 }
 
 
-export default EmployeeSignup;
+export default withRouter(EmployeeSignup);
