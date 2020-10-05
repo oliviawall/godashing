@@ -19,6 +19,7 @@ import EmployerRegistration from './pages/EmployerRegistration';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
+import VideoGrid from './pages/VideoGrid';
 import './default.scss';
 
 const App = props => {
@@ -88,6 +89,14 @@ const App = props => {
             <About />
           </MainLayout>
         )} />
+         <Route path='/videogrid' render={() => (
+        /* <WithAdminAuth> */
+          <MainLayout>
+            <VideoGrid />
+          </MainLayout>
+        /* </WithAdminAuth> */
+      )} />
+    
         </Switch>
       </div>
     );
