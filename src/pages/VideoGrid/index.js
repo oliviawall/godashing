@@ -21,11 +21,6 @@ class VideoGrid extends Component {
     render() {
         return (
             <div> 
-                <Col>
-                    <Row>
-                       
-                    </Row>
-                </Col>
             <Container className = 'gridTest'>
                     
                     <Col>
@@ -39,7 +34,7 @@ class VideoGrid extends Component {
                     </Col>
                     <Col>
                         <Row>
-                            <ZiggeoPlayer/>
+                      
                         </Row>
                     </Col>
                      <Col>
@@ -48,46 +43,27 @@ class VideoGrid extends Component {
                         </Row>
                        
                     </Col>
-                    <Col>
-                        <Row>
-                            Video goes here.
-                        </Row>
-                    </Col>
+                   
 
             </Container>
             <Container className= 'gridTest'>
                 <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
+                <ZiggeoPlayer
+                   apiKey={'a293c346773385bae50fb960f2210d2d'}
+                   video={'a741bfcb8dd370845ef2393ca614dc85'}
+                   theme={'mminimalist'}
+                   themecolor={'blue'}
+                   skipinitial={false}
+                   onPlaying={this.playing}
+                   onPaused={this.paused}
+     
+                 />
                 </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
+                
 
             </Container>
-            </div>
-            
-                
-            
-                  
-
-            
-           
-                   
-            
+            </div> 
+                             
         )
         
     }
