@@ -13,9 +13,12 @@ import WithAdminAuth from './hoc/withAdminAuth';
 // layouts //
 import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
+import AdminLayout from './layouts/AdminLayout';
+import DashboardLayout from './layouts/DashboardLayout';
  
 // pages //
 import Homepage from './pages/Homepage';
+import Search from './pages/Search';
 import About from './pages/About';
 import EmployeeRegistration from './pages/EmployeeRegistration';
 import EmployerRegistration from './pages/EmployerRegistration';
@@ -43,6 +46,16 @@ const App = props => {
             </HomepageLayout>
           )} 
           />
+          <Route exact path="/search" render={() => (
+          <MainLayout>
+            <Search />
+          </MainLayout>
+        )} />
+        <Route path="/search/:filterType" render={() => (
+          <MainLayout>
+            <Search />
+          </MainLayout>
+        )} />
           <Route path='/employeeregistration' render={() =>  (
             <MainLayout>
               <EmployeeRegistration />
@@ -66,9 +79,9 @@ const App = props => {
         )} />
         <Route path='/dashboard' render={() => (
           <WithAuth>
-          <MainLayout>
+          <DashboardLayout>
             <Dashboard />
-          </MainLayout>
+          </DashboardLayout>
           </WithAuth>
         )} />
         <Route path='/about'
@@ -79,9 +92,9 @@ const App = props => {
         )} />
         <Route path='/admin' render={() => ( 
           <WithAdminAuth>
-          <MainLayout>
+          <AdminLayout>
             <Admin />
-          </MainLayout>   
+          </AdminLayout>   
           </WithAdminAuth>
         )} />
         </Switch>
