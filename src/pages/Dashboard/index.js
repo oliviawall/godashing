@@ -3,9 +3,9 @@ import './styles.scss';
 
 const EmployeeDash = props => {
     return (
-        <h1>
-            Logged In
-        </h1>
+        <h2>
+            My Awesome Dashboard
+        </h2>
     );
 };
 

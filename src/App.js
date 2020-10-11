@@ -20,12 +20,14 @@ import DashboardLayout from './layouts/DashboardLayout';
 import Homepage from './pages/Homepage';
 import Search from './pages/Search';
 import About from './pages/About';
+import Contact from './pages/Contact';
 import EmployeeRegistration from './pages/EmployeeRegistration';
 import EmployerRegistration from './pages/EmployerRegistration';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
+import VideoGrid from './pages/VideoGrid';
 import './default.scss';
 
 const App = props => {
@@ -88,6 +90,17 @@ const App = props => {
         render={() => (
           <MainLayout>
             <About />
+          </MainLayout>
+        )} />
+          <Route path='/videogrid' render={() => (
+          <MainLayout>
+            <VideoGrid />
+          </MainLayout>
+      )} />
+        <Route path='/contact'
+        render={() => (
+          <MainLayout>
+            <Contact />
           </MainLayout>
         )} />
         <Route path='/admin' render={() => ( 

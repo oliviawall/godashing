@@ -1,14 +1,17 @@
 import React from 'react';
 import './styles.scss';
 
+import './styles.scss';
+
 const Admin = props => {
     return (
-        <div>
-            <h1>
+
+        <div className='admin'>
+            <h2>
                 My Admin
-            </h1>
+            </h2>
         </div>
     );
-}
+};
 
 export default Admin;
