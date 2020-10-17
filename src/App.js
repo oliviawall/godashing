@@ -5,6 +5,7 @@ import { checkUserSession } from './redux/User/user.actions';
 
 // components 
 import AdminToolbar from './components/AdminToolbar';
+import Paypal from './components/Paypal';
 
 // hoc
 import WithAuth from './hoc/withAuth';
@@ -101,6 +102,12 @@ const App = props => {
         render={() => (
           <MainLayout>
             <Contact />
+          </MainLayout>
+        )} />
+         <Route path='/paypal'
+        render={() => (
+          <MainLayout>
+            <Paypal />
           </MainLayout>
         )} />
         <Route path='/admin' render={() => ( 

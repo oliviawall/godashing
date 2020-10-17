@@ -8,16 +8,22 @@ const About = props => {
 
         <div className='about'>
 
-            <h1>
-                About Dashing
-            </h1>
-            <br />
-            <h5>
-                <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        <h1>
+            About Dashing
+        </h1>
+        <br />
+        <h5>
+            <p>
+                Dashing is a company that helps you make an impression and get a job using 1 minute videos on your job application. We were created out of a need for ourselves to stand out in the massive unemployment hike of the Covid-19 pandemic.
+                <br/>
+                <br/>
+
+                Our CEO Jake Shelby had just finished school in March of 2020 when he realized that he had to do more than just submit a typical resume. He knew he needed to let the hiring managers see him speak, as opposed to skimming his paper resume and stalking social media to see his personality.
+                At Dashing, we believe the traditional resume is now obsolete and the wave of the future is having a secure, online place for hiring managers to get a real impression of the job candidate via videos. Hiring managers can hear and see you, as opposed to read about you, while simultaneously skimming your job application. The goal is to take control of the first impression, all while becoming more than just another paper in a stack of resumes. With Dashing's easy-to-make online profiles, hiring managers can greatly reduce the time and costs of first wave, in-person interviews. Job applicants likewise can greatly increase the chances of getting a job/interview opportunity.
+                <br/>
+                <br/>
+
+                Our founding team hails from Northern California and Canada.
             </p>
 
             </h5>

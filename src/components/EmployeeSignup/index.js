@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signUpUserStart } from './../../redux/User/user.actions';
@@ -26,7 +26,7 @@ const EmployeeSignup = props => {
     useEffect(() => {
         if (currentUser) {
           reset();
-          history.push('/');
+          history.push('/paypal');
         }
 
     }, [currentUser]);
@@ -112,9 +112,11 @@ const handleFormSubmit = event => {
                         handleChange={e => setConfirmPassword(e.target.value)}
 
                     />
+                    
                     <Button type='submit'>
                         Register
                     </Button>
+                  
                 </form>
             </div>
         </AuthWrapper>
