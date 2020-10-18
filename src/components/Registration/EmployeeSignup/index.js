@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { signUpUserStart } from './../../redux/User/user.actions';
+import { signUpUserStart } from '../../../redux/User/user.actions';
 import './styles.scss';
 
-import AuthWrapper from './../AuthWrapper';
-import FormInput from './../forms/FormInput';
-import Button from './../forms/Button';
+import AuthWrapper from '../../AuthWrapper';
+import FormInput from '../../forms/FormInput';
+import Button from '../../forms/Button';
 
 const mapState = ({ user }) => ({
     currentUser: user.currentUser,
@@ -48,11 +48,13 @@ const EmployeeSignup = props => {
 
 const handleFormSubmit = event => {
     event.preventDefault();
+    let subscriptionActive = false;
     dispatch(signUpUserStart({
         displayName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        subscriptionActive,
     }));
 
 }

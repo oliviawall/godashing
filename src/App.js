@@ -5,7 +5,7 @@ import { checkUserSession } from './redux/User/user.actions';
 
 // components 
 import AdminToolbar from './components/AdminToolbar';
-import Paypal from './components/Paypal';
+import Paypal from './components/Payment/Paypal';
 
 // hoc
 import WithAuth from './hoc/withAuth';
@@ -22,8 +22,8 @@ import Homepage from './pages/Homepage';
 import Search from './pages/Search';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import EmployeeRegistration from './pages/EmployeeRegistration';
-import EmployerRegistration from './pages/EmployerRegistration';
+import EmployeeSignup from './components/Registration/EmployeeSignup';
+import EmployerSignup from './components/Registration/EmployerSignup';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
@@ -61,12 +61,12 @@ const App = props => {
         )} />
           <Route path='/employeeregistration' render={() =>  (
             <MainLayout>
-              <EmployeeRegistration />
+              <EmployeeSignup />
             </MainLayout>
           )} />
           <Route path='/employerregistration' render={() =>  (
             <MainLayout>
-              <EmployerRegistration />
+              <EmployerSignup />
             </MainLayout>
           )} />
           <Route path='/login' 

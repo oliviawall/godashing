@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import SignUp from './../../assets/SignUp.png';
-import './styles.scss';
+import SignUp from './../../../assets/SignUp.png';
+// import './styles.scss';
 
 function Paypal() {
     const [paidFor, setPaidFor] = useState(false);
