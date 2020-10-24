@@ -40,6 +40,7 @@ const SignIn = props => {
     const handleGoogleSignIn = () => {
         dispatch(googleSignInStart());
     }
+
     
     const configAuthWrapper = {
             headline: 'LogIn'

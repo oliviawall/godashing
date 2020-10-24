@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect  } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
@@ -6,6 +6,8 @@ import { checkUserSession } from './redux/User/user.actions';
 // components 
 import AdminToolbar from './components/AdminToolbar';
 import Paypal from './components/Payment/Paypal';
+import CheckoutForm from './components/Payment/Stripe/CheckoutForm';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 // hoc
 import WithAuth from './hoc/withAuth';
@@ -31,8 +33,10 @@ import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
 import './default.scss';
 
+
 const App = props => {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(checkUserSession());
@@ -42,13 +46,13 @@ const App = props => {
     return (
       <div className="App">
         <AdminToolbar />
-        <Switch>
-          <Route exact path='/' render={() => (
+        <Switch>  
+           <Route exact path='/' render={() => ( 
             <HomepageLayout>
               <Homepage />
-            </HomepageLayout>
-          )} 
-          />
+            </HomepageLayout> 
+          )} />
+
           <Route exact path="/search" render={() => (
           <MainLayout>
             <Search />
@@ -80,7 +84,7 @@ const App = props => {
             <Recovery />
           </MainLayout>
         )} />
-        <Route path='/dashboard' render={() => (
+        <Route exact path='/dashboard' render={() => (
           <WithAuth>
           <DashboardLayout>
             <Dashboard />
@@ -108,6 +112,12 @@ const App = props => {
         render={() => (
           <MainLayout>
             <Paypal />
+          </MainLayout>
+        )} />
+        <Route path='/stripe'
+        render={() => (
+          <MainLayout>
+            <CheckoutForm />
           </MainLayout>
         )} />
         <Route path='/admin' render={() => ( 

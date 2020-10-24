@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-const EmployeeDash = props => {
+const Dashboard = props => {
     return (
         <h2>
             My Awesome Dashboard
@@ -9,4 +9,4 @@ const EmployeeDash = props => {
     );
 };
 
-export default EmployeeDash ;
+export default Dashboard ;
