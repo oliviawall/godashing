@@ -13,6 +13,33 @@ const mapState = ({ user }) => ({
     userErr: user.userErr
 });
 
+
+/*
+Redux - 5steps?
+appContext
+    many other things
+    userContext = user info
+    toolContext = tool info
+
+    import appContext
+    const user = appContext.userContext;
+    user.
+
+userObj
+    intState
+        email = ''
+        name = ''
+        isSubsribed = false
+        more..
+
+login - userObj found database - set userObj
+
+signup - userObj - (importing appContext) - appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...
+    e.submit executed
+        userObj = {appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...}
+*/
+
+
 const EmployeeSignup = props => {
     const history = useHistory();
     const { currentUser, userErr } = useSelector(mapState);
@@ -22,6 +49,7 @@ const EmployeeSignup = props => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    
 
     useEffect(() => {
         if (currentUser) {
@@ -46,15 +74,14 @@ const EmployeeSignup = props => {
     setErrors([]);
 };
 
-const handleFormSubmit = event => {
+const handleFormSubmit = (event) => {
     event.preventDefault();
-    let subscriptionActive = false;
+    //let subscriptionActive = false;
     dispatch(signUpUserStart({
         displayName,
         email,
         password,
         confirmPassword,
-        subscriptionActive,
     }));
 
 }

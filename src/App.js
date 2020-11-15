@@ -7,6 +7,8 @@ import { checkUserSession } from './redux/User/user.actions';
 import AdminToolbar from './components/AdminToolbar';
 import Paypal from './components/Payment/Paypal';
 import CheckoutForm from './components/Payment/Stripe/CheckoutForm';
+import Carousel from './components/Carousel';
+
 // import ProtectedRoute from './components/ProtectedRoute';
 
 // hoc
@@ -36,7 +38,7 @@ import './default.scss';
 
 const App = props => {
   const dispatch = useDispatch();
-
+ 
 
   useEffect(() => {
     dispatch(checkUserSession());
@@ -84,6 +86,9 @@ const App = props => {
             <Recovery />
           </MainLayout>
         )} />
+        {/**
+         * Dashboard Route , authenticate here
+         */}
         <Route exact path='/dashboard' render={() => (
           <WithAuth>
           <DashboardLayout>
@@ -100,6 +105,11 @@ const App = props => {
           <Route path='/videogrid' render={() => (
           <MainLayout>
             <VideoGrid />
+          </MainLayout>
+      )} />
+         <Route path='/Carousel' render={() => (
+          <MainLayout>
+            <Carousel />
           </MainLayout>
       )} />
         <Route path='/contact'

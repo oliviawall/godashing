@@ -2,6 +2,7 @@ import userTypes from './user.types';
 
 const INITIAL_STATE = {
     currentUser: null,
+    subscriptionActive: false,
     resetPasswordSuccess: false,
     userErr: []
 };
@@ -13,6 +14,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUser: action.payload,
                 userErr: []
+            }
+        case userTypes.SUBSCRIBE_USER:
+            return{
+                ...state,
+                subscriptionActive: action.payload
+            }
+        case userTypes.SUBSCRIPTION_STATUS:
+            return{
+                ...state,
             }
         case userTypes.RESET_PASSWORD_SUCCESS:
             return {
