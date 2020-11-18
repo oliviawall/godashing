@@ -7,7 +7,6 @@ import { checkUserSession } from './redux/User/user.actions';
 import AdminToolbar from './components/AdminToolbar';
 import Paypal from './components/Payment/Paypal';
 import CheckoutForm from './components/Payment/Stripe/CheckoutForm';
-import Carousel from './components/Carousel';
 
 // import ProtectedRoute from './components/ProtectedRoute';
 
@@ -107,11 +106,7 @@ const App = props => {
             <VideoGrid />
           </MainLayout>
       )} />
-         <Route path='/Carousel' render={() => (
-          <MainLayout>
-            <Carousel />
-          </MainLayout>
-      )} />
+        
         <Route path='/contact'
         render={() => (
           <MainLayout>
