@@ -10,6 +10,7 @@ import Lesson from '../../components/lesson';
 import Videos from '../../components/Videos';
 import ResponsivePlayer from "../../components/Videos/index";
 
+
 const Dashboard = props => {
     return (
 
