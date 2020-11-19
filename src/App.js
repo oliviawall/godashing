@@ -6,7 +6,8 @@ import { checkUserSession } from './redux/User/user.actions';
 // components 
 import AdminToolbar from './components/AdminToolbar';
 import Paypal from './components/Payment/Paypal';
-import CheckoutForm from './components/Payment/Stripe/CheckoutForm';
+import CheckoutForm from './components/Payment/Stripe/CardInput';
+import Carousel from './components/Carousel';
 
 // import ProtectedRoute from './components/ProtectedRoute';
 
@@ -33,6 +34,7 @@ import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
 import './default.scss';
+import CardInput from './components/Payment/Stripe/CardInput';
 
 
 const App = props => {
@@ -80,6 +82,12 @@ const App = props => {
               <Login />
             </MainLayout>
           )} />
+            <Route path='/carousel' 
+          render={() =>  (
+            <MainLayout>
+              <Carousel />
+            </MainLayout>
+          )} />
           <Route path='/recovery' render={() => (
           <MainLayout>
             <Recovery />
@@ -122,7 +130,7 @@ const App = props => {
         <Route path='/stripe'
         render={() => (
           <MainLayout>
-            <CheckoutForm />
+            <CardInput />
           </MainLayout>
         )} />
         <Route path='/admin' render={() => ( 
