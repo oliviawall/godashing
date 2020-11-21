@@ -1,17 +1,36 @@
-import React from 'react';
-import { useSelector  } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch  } from 'react-redux';
+import { signOutUserStart } from './../../redux/User/user.actions';
 import './styles.scss';
 import { Link } from 'react-router-dom';
-import { auth } from './../../firebase/utils';
 
 import Logo from './../../assets/logo.png';
 
 const mapState = ({ user }) => ({
-    currentUser: user.currentUser
+    currentUser: user.currentUser,
+    // subscriptionActive: user.currentUser.subscriptionActive,
+
 });
 
 const Header = props => {
+    const dispatch = useDispatch();
     const { currentUser } = useSelector(mapState);
+    const [ subscriptionActive, setSubscription ] = useState(false);
+
+    const signOut = () => {
+        dispatch(signOutUserStart());
+    };
+
+    useEffect (() => { 
+        console.log ("currentUser:\n==== \=======\n",currentUser)
+
+        if (currentUser) {setSubscription(true)}
+
+        else if(!currentUser) {
+            // currentUser = false;
+            setSubscription(false)
+        }   
+    })
  
     return (
     <header className='header'>
@@ -24,7 +43,7 @@ const Header = props => {
 
         <div className='callToActions'>
 
-        {currentUser && (
+        {currentUser && subscriptionActive &&(
             <ul>
                 <li>
                     <Link to='/dashboard'>
@@ -32,23 +51,47 @@ const Header = props => {
                     </Link>
                      </li>
                 <li>
-                    <span onClick={() => auth.signOut()}>
+                    <span onClick={() => signOut()}>
                         LogOut
                     </span>
                 </li>
             </ul>
         )}
 
-            {!currentUser && (
+            {!currentUser || currentUser === null && (
                 <ul>
                     <li>
                     <Link to='/employeeregistration'>
-                    Register
+                    Job Seekers
                     </Link>
                      </li>
                     <li>
+                    <li>
+                    <Link to='/employerregistration'>
+                    Businesses
+                    </Link>
+                     </li>
                     <Link to='/login'>
-                        Login
+                     Login
+                    </Link>
+                    </li>
+                    </ul>
+                  )}
+                  {!subscriptionActive && (
+                <ul>
+                    <li>
+                    <Link to='/employeeregistration'>
+                    Job Seekers
+                    </Link>
+                     </li>
+                    <li>
+                    <li>
+                    <Link to='/employerregistration'>
+                    Businesses
+                    </Link>
+                     </li>
+                    <Link to='/login'>
+                     Login
                     </Link>
                     </li>
                     </ul>
@@ -60,7 +103,8 @@ const Header = props => {
 };
 
 Header.defaultProps = {
-    currentUser: null
+    currentUser: null 
+    
 };
 
 export default Header;

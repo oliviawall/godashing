@@ -1,42 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { signUpUser, resetAllAuthForms } from './../../redux/User/user.actions';
+import { useHistory } from 'react-router-dom';
+import { signUpUserStart } from '../../../redux/User/user.actions';
 import './styles.scss';
 
-import AuthWrapper from './../AuthWrapper';
-import FormInput from './../forms/FormInput';
-import Button from './../forms/Button';
+import AuthWrapper from '../../AuthWrapper';
+import FormInput from '../../forms/FormInput';
+import Button from '../../forms/Button';
 
 const mapState = ({ user }) => ({
-    signUpSuccess: user.signUpSuccess,
-    signUpError: user.signUpError
+    currentUser: user.currentUser,
+    userErr: user.userErr
 });
 
+
+/*
+Redux - 5steps?
+appContext
+    many other things
+    userContext = user info
+    toolContext = tool info
+
+    import appContext
+    const user = appContext.userContext;
+    user.
+
+userObj
+    intState
+        email = ''
+        name = ''
+        isSubsribed = false
+        more..
+
+login - userObj found database - set userObj
+
+signup - userObj - (importing appContext) - appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...
+    e.submit executed
+        userObj = {appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...}
+*/
+
+
 const EmployeeSignup = props => {
-    const { signUpSuccess, signUpError } = useSelector(mapState);
+    const history = useHistory();
+    const { currentUser, userErr } = useSelector(mapState);
     const dispatch = useDispatch();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    
 
     useEffect(() => {
-        if (signUpSuccess) {
+        if (currentUser) {
           reset();
-          dispatch(resetAllAuthForms());
-          props.history.push('/');
+          history.push('/paypal');
         }
 
-    }, [signUpSuccess]);
+    }, [currentUser]);
 
     useEffect(() => {
-        if (Array.isArray(signUpError) && signUpError.length > 0) {
-          setErrors(signUpError);
+        if (Array.isArray(userErr) && userErr.length > 0) {
+          setErrors(userErr);
         }
         
-    }, [signUpError]);
+    }, [userErr]);
 
   const reset = () => {
     setDisplayName('');
@@ -46,13 +74,14 @@ const EmployeeSignup = props => {
     setErrors([]);
 };
 
-const handleFormSubmit = event => {
+const handleFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(signUpUser({
+    //let subscriptionActive = false;
+    dispatch(signUpUserStart({
         displayName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
     }));
 
 }
@@ -112,9 +141,11 @@ const handleFormSubmit = event => {
                         handleChange={e => setConfirmPassword(e.target.value)}
 
                     />
+                    
                     <Button type='submit'>
                         Register
                     </Button>
+                  
                 </form>
             </div>
         </AuthWrapper>
@@ -123,4 +154,4 @@ const handleFormSubmit = event => {
 }
 
 
-export default withRouter(EmployeeSignup);
+export default EmployeeSignup;

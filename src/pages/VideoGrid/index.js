@@ -7,7 +7,11 @@ import {ZiggeoPlayer} from 'react-ziggeo';
 
 
 
+<<<<<<< HEAD
 import './style.scss';
+=======
+import './styles.scss';
+>>>>>>> upstream/master
 
 
 
@@ -37,6 +41,7 @@ class VideoGrid extends Component {
                         </ziggeorecorder>
                         </Row>
                     </Col>
+<<<<<<< HEAD
                     <Col>
                         <Row>
                             <ZiggeoPlayer/>
@@ -97,3 +102,26 @@ class VideoGrid extends Component {
 
 export default VideoGrid;
 
+=======
+                   
+                   <ZiggeoPlayer
+                   apiKey={'a293c346773385bae50fb960f2210d2d'}
+                   video={'a741bfcb8dd370845ef2393ca614dc85'}
+                   theme={'mminimalist'}
+                   themecolor={'blue'}
+                   skipinitial={false}
+                   onPlaying={this.playing}
+                   onPaused={this.paused}
+                 />
+
+            </Container>
+            </div>
+    
+        )
+        
+    }
+     
+}
+
+export default VideoGrid;
+>>>>>>> upstream/master

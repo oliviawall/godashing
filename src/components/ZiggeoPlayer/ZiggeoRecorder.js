@@ -184,6 +184,7 @@ ZiggeoRecorder.defaultProps = {
 };
 
 export default withZiggeoApplication(ZiggeoRecorder);
+<<<<<<< HEAD
 
 // const doesUpdateRequire = (prevProps, nextProps) => {
 //   // const oldApiKey = prevProps['apiKey'];
@@ -193,3 +194,5 @@ export default withZiggeoApplication(ZiggeoRecorder);
 // };
 
 // export default withZiggeoApplication(React.memo(ZiggeoRecorder, doesUpdateRequire));
+=======
+>>>>>>> upstream/master

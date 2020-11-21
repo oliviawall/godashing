@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
 import React, { useState, useEffect, useRef } from 'react';
 import withZiggeoApplication from "./withZiggeoApplication";
 import {ZiggeoRecorder} from 'react-ziggeo';
@@ -36,3 +40,7 @@ ziggeoApp.on("ready", function() {
 );
 
  export default withZiggeoApplication(ZiggeoPlayer);
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> upstream/master
