@@ -1,10 +1,10 @@
 import firebase from "firebase";
 import React, { Component } from 'react';
 import {Table, Container, Grid, Row, Col, Image, Button} from 'react-bootstrap';
-import { useStore } from "react-redux";
+// import { useStore } from "react-redux";
 import {ZiggeoPlayer} from 'react-ziggeo';
-import { useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+// import { useSelector } from 'react-redux';
+// import { createSelector } from 'reselect';
 
 
 
@@ -22,9 +22,9 @@ class VideoGrid extends Component {
         this.i =0;
     }
 
-    componentDidMount = () => {
-        this.context.Redux.getState(this.state)
-    }
+    // componentDidMount = () => {
+    //     this.context.Redux.getState(this.state)
+    // }
     render() {
         return (
             <div> 
