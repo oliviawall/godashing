@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import water from './../../assets/water.png';
+import blueBackdrop from './../../assets/blueBackdrop.png';
 import './styles.scss';
 
 
@@ -12,7 +12,7 @@ const Directory = props => {
                 <div
                     className='item'
                     style={{
-                        backgroundImage: `url(${water})`
+                        backgroundImage: `url(${blueBackdrop})`
                     }}
                 >
                     <Link to='/about'>
@@ -21,7 +21,7 @@ const Directory = props => {
                 </div>
                 <div
                     style={{
-                        backgroundImage: `url(${water})`
+                        backgroundImage: `url(${blueBackdrop})`
                     }}
                 ></div>
             </div>
