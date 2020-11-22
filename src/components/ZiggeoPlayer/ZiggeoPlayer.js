@@ -36,3 +36,4 @@ ziggeoApp.on("ready", function() {
 );
 
  export default withZiggeoApplication(ZiggeoPlayer);
+ 

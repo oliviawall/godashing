@@ -1,17 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { signUpUserStart } from './../../redux/User/user.actions';
+import { signUpUserStart } from '../../../redux/User/user.actions';
 import './styles.scss';
 
-import AuthWrapper from './../AuthWrapper';
-import FormInput from './../forms/FormInput';
-import Button from './../forms/Button';
+import AuthWrapper from '../../AuthWrapper';
+import FormInput from '../../forms/FormInput';
+import Button from '../../forms/Button';
 
 const mapState = ({ user }) => ({
     currentUser: user.currentUser,
     userErr: user.userErr
 });
+
+
+/*
+Redux - 5steps?
+appContext
+    many other things
+    userContext = user info
+    toolContext = tool info
+
+    import appContext
+    const user = appContext.userContext;
+    user.
+
+userObj
+    intState
+        email = ''
+        name = ''
+        isSubsribed = false
+        more..
+
+login - userObj found database - set userObj
+
+signup - userObj - (importing appContext) - appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...
+    e.submit executed
+        userObj = {appContext.isSubscibed = false, appContext.email = myEamil@gmail.com...}
+*/
+
 
 const EmployeeSignup = props => {
     const history = useHistory();
@@ -22,11 +49,12 @@ const EmployeeSignup = props => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    
 
     useEffect(() => {
         if (currentUser) {
           reset();
-          history.push('/');
+          history.push('/paypal');
         }
 
     }, [currentUser]);
@@ -46,13 +74,14 @@ const EmployeeSignup = props => {
     setErrors([]);
 };
 
-const handleFormSubmit = event => {
+const handleFormSubmit = (event) => {
     event.preventDefault();
+    //let subscriptionActive = false;
     dispatch(signUpUserStart({
         displayName,
         email,
         password,
-        confirmPassword
+        confirmPassword,
     }));
 
 }
@@ -112,9 +141,11 @@ const handleFormSubmit = event => {
                         handleChange={e => setConfirmPassword(e.target.value)}
 
                     />
+                    
                     <Button type='submit'>
                         Register
                     </Button>
+                  
                 </form>
             </div>
         </AuthWrapper>

@@ -9,6 +9,13 @@ export const signInSuccess = user => ({
     type: userTypes.SIGN_IN_SUCCESS,
     payload: user
 });
+export const subscribeUser = user => ({
+    type: userTypes.SUBSCRIBE_USER,
+    payload: user
+});
+export const getSubscriptionStatus = user => ({
+    type: userTypes.SUBSCRIPTION_STATUS,
+});
 
 export const checkUserSession = () => ({
     type: userTypes.CHECK_USER_SESSION,
@@ -49,3 +56,4 @@ export const resetUserState = () => ({
 export const googleSignInStart = () => ({
     type: userTypes.GOOGLE_SIGN_IN_START
 });
+

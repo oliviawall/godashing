@@ -16,14 +16,14 @@ const mapState = ({ user }) => ({
 const SignIn = props => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { currentUser } = useSelector(mapState);
+    const { currentUser, isSubscribed } = useSelector(mapState);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const apiKey= 'a293c346773385bae50fb960f2210d2d';
     const tags = ['name', 'email'];
 
     useEffect(() => {
-     if (currentUser) {
+     if (currentUser && isSubscribed ) {
         resetForm();
         history.push('/');
       }
@@ -45,6 +45,7 @@ const SignIn = props => {
     const handleGoogleSignIn = () => {
         dispatch(googleSignInStart());
     }
+
     
     const configAuthWrapper = {
             headline: 'LogIn'

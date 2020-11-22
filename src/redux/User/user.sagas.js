@@ -69,7 +69,8 @@ export function* signUpUser({ payload: {
     displayName,
     email,
     password,
-    confirmPassword
+    confirmPassword,
+    subscriptionActive,
 } }) {
 
     if (password !== confirmPassword) {
@@ -82,7 +83,9 @@ export function* signUpUser({ payload: {
 
     try {
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-        const additionalData = { displayName };
+        const additionalData = { displayName, 
+            subscriptionActive 
+        };
         yield getSnapshotFromUserAuth(user, additionalData);
         
     } catch (err) {
@@ -134,5 +137,6 @@ export default function* userSagas() {
         call(onSignUpUserStart), 
         call(onResetPasswordStart),
         call(onGoogleSignInStart),
+    
     ])   
 }
