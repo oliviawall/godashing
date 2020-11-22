@@ -31,10 +31,7 @@ import EmployerSignup from './components/Registration/EmployerSignup';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
-<<<<<<< HEAD
-=======
 import Admin from './pages/Admin';
->>>>>>> upstream/master
 import VideoGrid from './pages/VideoGrid';
 import './default.scss';
 import CardInput from './components/Payment/Stripe/CardInput';
@@ -112,16 +109,6 @@ const App = props => {
             <About />
           </MainLayout>
         )} />
-<<<<<<< HEAD
-         <Route path='/videogrid' render={() => (
-        /* <WithAdminAuth> */
-          <MainLayout>
-            <VideoGrid />
-          </MainLayout>
-        /* </WithAdminAuth> */
-      )} />
-    
-=======
           <Route path='/videogrid' render={() => (
           <MainLayout>
             <VideoGrid />
@@ -153,7 +140,6 @@ const App = props => {
           </AdminLayout>   
           </WithAdminAuth>
         )} />
->>>>>>> upstream/master
         </Switch>
       </div>
     );

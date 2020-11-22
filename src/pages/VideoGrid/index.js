@@ -7,11 +7,7 @@ import {ZiggeoPlayer} from 'react-ziggeo';
 
 
 
-<<<<<<< HEAD
-import './style.scss';
-=======
 import './styles.scss';
->>>>>>> upstream/master
 
 
 
@@ -41,68 +37,6 @@ class VideoGrid extends Component {
                         </ziggeorecorder>
                         </Row>
                     </Col>
-<<<<<<< HEAD
-                    <Col>
-                        <Row>
-                            <ZiggeoPlayer/>
-                        </Row>
-                    </Col>
-                     <Col>
-                        <Row>
-                            
-                        </Row>
-                       
-                    </Col>
-                    <Col>
-                        <Row>
-                            Video goes here.
-                        </Row>
-                    </Col>
-
-            </Container>
-            <Container className= 'gridTest'>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-                <Col>
-                    <Row>
-                        Video goes here.
-                    </Row>
-                </Col>
-
-            </Container>
-            </div>
-            
-                
-            
-                  
-
-            
-           
-                   
-            
-        )
-        
-    }
-
-        
-}
-
-export default VideoGrid;
-
-=======
                    
                    <ZiggeoPlayer
                    apiKey={'a293c346773385bae50fb960f2210d2d'}
@@ -124,4 +58,3 @@ export default VideoGrid;
 }
 
 export default VideoGrid;
->>>>>>> upstream/master
