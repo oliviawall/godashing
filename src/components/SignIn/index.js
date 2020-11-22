@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { emailSignInStart, googleSignInStart } from './../../redux/User/user.actions';
+import { ZiggeoPlayer } from "react-ziggeo";
 import './styles.scss';
 
 import AuthWrapper from './../AuthWrapper';
@@ -18,6 +19,8 @@ const SignIn = props => {
     const { currentUser, isSubscribed } = useSelector(mapState);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const apiKey= 'a293c346773385bae50fb960f2210d2d';
+    const tags = ['name', 'email'];
 
     useEffect(() => {
      if (currentUser && isSubscribed ) {
@@ -26,6 +29,7 @@ const SignIn = props => {
       }
 
     }, [currentUser]);
+    
 
     const resetForm = () => {
         setEmail('');
@@ -35,6 +39,7 @@ const SignIn = props => {
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(emailSignInStart({ email, password }));
+   
     }
 
     const handleGoogleSignIn = () => {
@@ -50,6 +55,8 @@ const SignIn = props => {
          <AuthWrapper {...configAuthWrapper}>
              <div className='formWrap'>
                  <form onSubmit={handleSubmit}>
+                 
+                 
 
                   <FormInput
                     type='email'
@@ -77,6 +84,7 @@ const SignIn = props => {
                      <Button onClick={handleGoogleSignIn}>
                       Sign in with Google
                     </Button>
+                   
                             </div>
                         </div>
 
