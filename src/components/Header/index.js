@@ -79,6 +79,11 @@ const Header = props => {
                   )}
                   {!subscriptionActive && (
                 <ul>
+                     <li>
+                    <Link to='/team'>
+                    Meet the Team
+                    </Link>
+                     </li>
                     <li>
                     <Link to='/employeeregistration'>
                     Job Seekers
@@ -90,10 +95,12 @@ const Header = props => {
                     Businesses
                     </Link>
                      </li>
+                    
                     <Link to='/login'>
                      Login
                     </Link>
                     </li>
+                    
                     </ul>
                   )}
               </div>

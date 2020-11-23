@@ -24,7 +24,8 @@ import DashboardLayout from './layouts/DashboardLayout';
 // pages //
 import Homepage from './pages/Homepage';
 import Search from './pages/Search';
-import About from './pages/About';
+import About from './pages/About/about';
+import Team from './pages/About/team';
 import Contact from './pages/Contact';
 import EmployeeSignup from './components/Registration/EmployeeSignup';
 import EmployerSignup from './components/Registration/EmployerSignup';
@@ -107,6 +108,12 @@ const App = props => {
         render={() => (
           <MainLayout>
             <About />
+          </MainLayout>
+        )} />
+          <Route path='/Team'
+        render={() => (
+          <MainLayout>
+            <Team />
           </MainLayout>
         )} />
           <Route path='/videogrid' render={() => (

@@ -3,36 +3,18 @@ import React from 'react';
 import Passion from './../../assets/contact.png';
 import './styles.scss';
 
-// export default React.createClass ({
-  
-//     render() {
-//         var background = {backgroundSize : 'cover'};
-//         var textStyle = {
-//           position: 'absolute', 
-//           top: '50%', 
-//           left: '50%'
-//         };
 
-//         return (
-//             <div style={{width: 'auto'}}>
-//                 <img 
-//                   style={background} responsive 
-//                   src='https://unsplash.com/photos/TamMbr4okv4'
-//                 </img>
-//                 <h1 style={textStyle}>Text over image</h1>
-//             </div>
-//         );
-//     }
-
-// });
 const Contact = props => {
     return (
-
-    <div className="background">
-        <img src={Passion} />
-        <div className='box'>
-        <h3>Looking to connect?</h3></div>
-    </div>
+<div className='contact'> 
+        <div class="icon-bar">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="google"><i class="fa fa-google"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+        </div>
+        </div>
     );
 };
 
