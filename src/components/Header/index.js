@@ -59,6 +59,7 @@ const Header = props => {
         )}
 
             {!currentUser || currentUser === null && (
+                
                 <ul>
                     <li>
                     <Link to='/employeeregistration'>

@@ -36,7 +36,7 @@ import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
 import './default.scss';
 import CardInput from './components/Payment/Stripe/CardInput';
-
+import FadeLandTest from './components/FadeLandTest';
 
 const App = props => {
   const dispatch = useDispatch();
@@ -81,6 +81,12 @@ const App = props => {
           render={() =>  (
             <MainLayout>
               <Login />
+            </MainLayout>
+          )} />
+          <Route path='/FadeLandTest' 
+          render={() =>  (
+            <MainLayout>
+              <FadeLandTest />
             </MainLayout>
           )} />
             <Route path='/carousel' 

@@ -1,5 +1,6 @@
 import React from 'react';
 import profilepic from './../../assets/profilepic.png'
+
 import './styles.scss';
 
 const TheTeam = props => {

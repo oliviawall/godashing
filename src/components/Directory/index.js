@@ -9,15 +9,20 @@ const Directory = props => {
     return (
         <div className='directory'>
             <div className='wrap'>
+                
                 <div
                     className='item'
                     style={{
                         backgroundImage: `url(${blueBackdrop})`
                     }}
                 >
-                    <Link to='/about'>
+                    <div id='test'>
+
+                        <a className='test' href='/about'>Why Go Dashing?</a>
+                    {/* <Link to='/about'>
                         Why Go Dashing?
-                     </Link>
+                     </Link> */}
+                     </div>
                 </div>
                 <div
                     style={{
