@@ -80,6 +80,11 @@ const Header = props => {
                   )}
                   {!subscriptionActive && (
                 <ul>
+                      <li>
+                    <Link to='/contact'>
+                    Contact
+                    </Link>
+                     </li>
                      <li>
                     <Link to='/team'>
                     Meet the Team
