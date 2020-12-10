@@ -8,6 +8,7 @@ import AdminToolbar from './components/AdminToolbar';
 import Paypal from './components/Payment/Paypal';
 import CheckoutForm from './components/Payment/Stripe/CardInput';
 import Carousel from './components/Carousel';
+import CardInput from './components/Payment/Stripe/CardInput';
 
 // import ProtectedRoute from './components/ProtectedRoute';
 
@@ -24,8 +25,8 @@ import DashboardLayout from './layouts/DashboardLayout';
 // pages //
 import Homepage from './pages/Homepage';
 import Search from './pages/Search';
-import About from './pages/About/about';
-import Team from './pages/About/team';
+import About from './pages/About';
+import Team from './pages/Team';
 import Contact from './pages/Contact';
 import EmployeeSignup from './components/Registration/EmployeeSignup';
 import EmployerSignup from './components/Registration/EmployerSignup';
@@ -34,9 +35,10 @@ import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
+import Payment from './pages/Payment';
 import './default.scss';
-import CardInput from './components/Payment/Stripe/CardInput';
-import FadeLandTest from './components/FadeLandTest';
+
+
 
 const App = props => {
   const dispatch = useDispatch();
@@ -67,6 +69,11 @@ const App = props => {
             <Search />
           </MainLayout>
         )} />
+        <Route path='/payment' render={() => (
+          <MainLayout>
+            <Payment />
+          </MainLayout>
+        )} />
           <Route path='/employeeregistration' render={() =>  (
             <MainLayout>
               <EmployeeSignup />
@@ -81,12 +88,6 @@ const App = props => {
           render={() =>  (
             <MainLayout>
               <Login />
-            </MainLayout>
-          )} />
-          <Route path='/FadeLandTest' 
-          render={() =>  (
-            <MainLayout>
-              <FadeLandTest />
             </MainLayout>
           )} />
             <Route path='/carousel' 

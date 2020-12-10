@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-import image1 from '../../assets/water.png';
+import image1 from '../../assets/web.png';
 
 const About = props => {
     return (
