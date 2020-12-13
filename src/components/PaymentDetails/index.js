@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { CardElement, useElements } from '@stripe/react-stripe-js';
 import FormInput from './../forms/FormInput';
 import Button from './../forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
+import { apiInstance } from './../../Utils';
+import { selectCartTotal } from './../../redux/Cart/cart.selectors';
+import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import './styles.scss';
 
 const initialAddress = {
@@ -13,7 +18,14 @@ const initialAddress = {
     country: '',
 };
 
+const mapState = createStructuredSelector({
+    total: selectCartTotal
+});
+
 const PaymentDetails = () => {
+    const elements = useElements();
+    // doesn't like "total" when I comment out, the app stops crashing -->
+    // const { total } = useSelector();
     const [billingAddress, setBillingAddress] = useState({ ...initialAddress });
     const [shippingAddress, setShippingAddress] = useState({ ...initialAddress });
     const [recipientName, setRecipientName] = useState('');
@@ -38,10 +50,45 @@ const PaymentDetails = () => {
 
     const handleFormSubmit = async e => {
         e.preventDefault();
+        const cardElement = elements.getElement('card');
+
+        if (
+            !shippingAddress.line1 || !shippingAddress.city ||
+            !shippingAddress.state || !shippingAddress.zip_code ||
+            !shippingAddress.country || !billingAddress.line1 ||
+            !billingAddress.city || !billingAddress.state ||
+            !billingAddress.zip_code || !billingAddress.country ||
+            !recipientName || !nameOnCard
+        ) {
+            return;
+        }
+
+        apiInstance.post('/payments/create', {
+            amount: 4.99, 
+            // line above should say amount: total * 100, but crashes app
+            shipping: {
+                name: recipientName,
+                address: {
+                    ...shippingAddress
+                }
+            }
+        }).then(({ data: clientSecret}) => {
+
+        });
+
+    };
+
+    const configCardElement = {
+        iconStyle: 'solid',
+        style: {
+            base: {
+                fontSize: '16px'
+            }
+        },
+        hidePostalCode: true
     };
 
     return (
-
         <div className='paymentDetails'>
             <form onSubmit={handleFormSubmit}>
 
@@ -51,6 +98,7 @@ const PaymentDetails = () => {
                     </h2>
 
                     <FormInput
+                        required
                         placeholder='Recipient Name'
                         name='recipientName'
                         handleChange={e => setRecipientName(e.target.value)}
@@ -58,6 +106,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='Line 1'
                         name='line1'
                         handleChange={e => handleShipping(e)}
@@ -73,6 +122,7 @@ const PaymentDetails = () => {
                     />
 
                     <FormInput
+                        required
                         placeholder='City'
                         name='city'
                         handleChange={e => handleShipping(e)}
@@ -80,6 +130,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='State'
                         name='state'
                         handleChange={e => handleShipping(e)}
@@ -87,6 +138,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='Zip Code'
                         name='zip code'
                         handleChange={e => handleShipping(e)}
@@ -95,6 +147,7 @@ const PaymentDetails = () => {
                     />
                     <div className='formRow checkoutInput'>
                         <CountryDropdown
+                            required
                             onChange={val => handleShipping({
                                 target: {
                                     name: 'country',
@@ -114,6 +167,7 @@ const PaymentDetails = () => {
                         Billing Details
                     </h2>
                     <FormInput
+                        required
                         placeholder='Name on Card'
                         name='nameOnCard'
                         handleChange={e => setNameOnCard(e.target.value)}
@@ -121,6 +175,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='Line 1'
                         name='line1'
                         handleChange={e => handleBilling(e)}
@@ -136,6 +191,7 @@ const PaymentDetails = () => {
                     />
 
                     <FormInput
+                        required
                         placeholder='City'
                         name='city'
                         handleChange={e => handleBilling(e)}
@@ -143,6 +199,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='State'
                         name='state'
                         handleChange={e => handleBilling(e)}
@@ -150,6 +207,7 @@ const PaymentDetails = () => {
                         type='text'
                     />
                     <FormInput
+                        required
                         placeholder='Zip Code'
                         name='zip code'
                         handleChange={e => handleBilling(e)}
@@ -158,6 +216,7 @@ const PaymentDetails = () => {
                     />
                     <div className='formRow checkoutInput'>
                         <CountryDropdown
+                            required
                             onChange={val => handleBilling({
                                 target: {
                                     name: 'country',
@@ -175,24 +234,16 @@ const PaymentDetails = () => {
                     <h2>
                         Card Details
                     </h2>
-                    <FormInput
-                        placeholder='Name on card'
-                        name='nameOnCard'
-                        type='text'
-                    />
-                    <FormInput
-                        placeholder='Card number'
-                        name='cardNumber'
-                        value='cardNumber'
-                        type='number'
-                    />
-                    <FormInput
-                        placeholder='CVV'
-                        name='cvv'
-                        type='number'
+                    <CardElement
+                        options={configCardElement}
                     />
                 </div>
 
+                <Button
+                    type='submit'
+                >
+                    Pay Now
+                </Button>
             </form>
         </div>
     );
