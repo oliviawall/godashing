@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss';
 
 import image1 from '../../assets/web.png';
+import { Button } from 'react-bootstrap';
 
 const About = props => {
     return (
@@ -19,9 +20,9 @@ const About = props => {
                 the chances of getting a job/interview opportunity.
              <br />
                 </p>
-                <button type='submit'>
+                <Button type='submit'>
                  Start Your 7 Day Free Trial
-                </button>
+                </Button>
             </div>
         </div>
     );
