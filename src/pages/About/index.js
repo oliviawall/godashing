@@ -20,9 +20,9 @@ const About = props => {
                 the chances of getting a job/interview opportunity.
              <br />
                 </p>
-                <Button type='submit'>
+                <button type='submit'>
                  Start Your 7 Day Free Trial
-                </Button>
+                </button>
             </div>
         </div>
     );
