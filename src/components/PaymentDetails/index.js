@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CardElement, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import FormInput from './../forms/FormInput';
 import Button from './../forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
@@ -23,6 +23,7 @@ const mapState = createStructuredSelector({
 });
 
 const PaymentDetails = () => {
+    const stripe = useStripe();
     const elements = useElements();
     // doesn't like "total" when I comment out, the app stops crashing -->
     // const { total } = useSelector();
@@ -64,15 +65,35 @@ const PaymentDetails = () => {
         }
 
         apiInstance.post('/payments/create', {
-            amount: 4.99, 
-            // line above should say amount: total * 100, but crashes app
+            amount: 4.99,
+            // line above should read amount: total * 100, but crashes app
             shipping: {
                 name: recipientName,
                 address: {
                     ...shippingAddress
                 }
             }
-        }).then(({ data: clientSecret}) => {
+        }).then(({ data: clientSecret }) => {
+
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+                billing_details: {
+                    name: nameOnCard,
+                    address: {
+                        ...billingAddress
+                    }
+                }
+            }).then(({ paymentMethod }) => {
+
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: paymentMethod.id
+                })
+                    .then(({ paymentIntent }) => {
+                        console.log(paymentIntent)
+                    });
+
+            })
 
         });
 
@@ -139,11 +160,11 @@ const PaymentDetails = () => {
                     />
                     <FormInput
                         required
-                        placeholder='Zip Code'
-                        name='zip code'
+                        placeholder="Zip Code"
+                        name="zip_code"
                         handleChange={e => handleShipping(e)}
                         value={shippingAddress.zip_code}
-                        type='text'
+                        type="text"
                     />
                     <div className='formRow checkoutInput'>
                         <CountryDropdown
@@ -194,25 +215,25 @@ const PaymentDetails = () => {
                         required
                         placeholder='City'
                         name='city'
-                        handleChange={e => handleBilling(e)}
-                        value={billingAddress.city}
+                        handleChange={e => handleShipping(e)}
+                        value={shippingAddress.city}
                         type='text'
                     />
                     <FormInput
                         required
                         placeholder='State'
                         name='state'
-                        handleChange={e => handleBilling(e)}
-                        value={billingAddress.state}
+                        handleChange={e => handleShipping(e)}
+                        value={shippingAddress.state}
                         type='text'
                     />
                     <FormInput
                         required
-                        placeholder='Zip Code'
-                        name='zip code'
-                        handleChange={e => handleBilling(e)}
-                        value={billingAddress.zip_code}
-                        type='text'
+                        placeholder="Zip Code"
+                        name="zip_code"
+                        handleChange={e => handleShipping(e)}
+                        value={shippingAddress.zip_code}
+                        type="text"
                     />
                     <div className='formRow checkoutInput'>
                         <CountryDropdown

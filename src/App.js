@@ -36,6 +36,7 @@ import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
 import Payment from './pages/Payment';
+import Cart from './pages/Cart';
 import './default.scss';
 
 
@@ -139,6 +140,11 @@ const App = props => {
         render={() => (
           <MainLayout>
             <Paypal />
+          </MainLayout>
+        )} />
+        <Route path="/cart" render={() => (
+          <MainLayout>
+            <Cart />
           </MainLayout>
         )} />
         <Route path='/stripe'
