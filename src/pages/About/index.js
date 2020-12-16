@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss';
 
 import image1 from '../../assets/web.png';
+import { Button } from 'react-bootstrap';
 
 const About = props => {
     return (
