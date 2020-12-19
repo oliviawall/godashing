@@ -35,7 +35,7 @@ app.post('/payments/create', async (req, res) => {
 
 app.get('/', (req, res) => {
     console.log("HELLO!");
-    res.json("say hello")
+    
     res
         .status(404)
         .send('404, Not Found.');

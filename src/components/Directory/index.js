@@ -7,6 +7,10 @@ import './styles.scss';
 const Directory = props => {
 
     return (
+
+        // <div className='image-container'>
+        //     <div className='text'>DASHING</div>
+        // </div>
         <div className='directory'>
             <div className='wrap'>
                 

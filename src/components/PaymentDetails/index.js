@@ -5,8 +5,10 @@ import Button from './../forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 import { apiInstance } from './../../Utils';
 import { selectCartTotal } from './../../redux/Cart/cart.selectors';
+import { clearCart } from './../../redux/Cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './styles.scss';
 
 const initialAddress = {
@@ -27,6 +29,7 @@ const PaymentDetails = () => {
     const elements = useElements();
     // doesn't like "total" when I comment out, the app stops crashing -->
     // const { total } = useSelector();
+    const dispatch = useDispatch();
     const [billingAddress, setBillingAddress] = useState({ ...initialAddress });
     const [shippingAddress, setShippingAddress] = useState({ ...initialAddress });
     const [recipientName, setRecipientName] = useState('');
@@ -85,7 +88,7 @@ const PaymentDetails = () => {
                     }
                 }
             }).then(({ paymentMethod }) => {
-
+                
                 stripe.confirmCardPayment(clientSecret, {
                     payment_method: paymentMethod.id
                 })

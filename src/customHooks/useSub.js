@@ -12,7 +12,7 @@ const useSub = props => {
     const history = useHistory();
     useEffect(() => {
         if (!checkUserIsSubscribed(currentUser)) {
-            history.push('/login');
+            history.push('/payment');
         }
     }, [currentUser]);
 
