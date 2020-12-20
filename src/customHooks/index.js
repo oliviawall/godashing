@@ -1,9 +1,12 @@
 import useAuth from './useAuth';
 import useAdminAuth from './useAdminAuth';
-// import useSub from './useSub';
+import useSub from './useSub';
 
 export {
-    // withSub,
+    // access upon subscription
+    useSub,
+    // access upon login
     useAuth,
+    // access with admin status
     useAdminAuth
 };

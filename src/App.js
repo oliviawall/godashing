@@ -15,6 +15,8 @@ import CardInput from './components/Payment/Stripe/CardInput';
 // hoc
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
+import WithSub from './hoc/withSub';
+
 
 // layouts //
 import MainLayout from './layouts/MainLayout';
@@ -38,6 +40,7 @@ import VideoGrid from './pages/VideoGrid';
 import Payment from './pages/Payment';
 import Cart from './pages/Cart';
 import './default.scss';
+
 
 
 
@@ -120,9 +123,11 @@ const App = props => {
         )} />
           <Route path='/Team'
         render={() => (
+          
           <MainLayout>
             <Team />
           </MainLayout>
+          
         )} />
           <Route path='/videogrid' render={() => (
           <MainLayout>
