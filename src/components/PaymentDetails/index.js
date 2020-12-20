@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import FormInput from './../forms/FormInput';
 import Button from './../forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 import { apiInstance } from './../../Utils';
-import { selectCartTotal } from './../../redux/Cart/cart.selectors';
+import { selectCartTotal, selectCartItemsCount } from './../../redux/Cart/cart.selectors';
 import { clearCart } from './../../redux/Cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,19 +21,21 @@ const initialAddress = {
 };
 
 const mapState = createStructuredSelector({
-    total: selectCartTotal
+    total: selectCartTotal,
+    itemCount: selectCartItemsCount
 });
 
 const PaymentDetails = () => {
     const stripe = useStripe();
     const elements = useElements();
     // doesn't like "total" when I comment out, the app stops crashing -->
-    // const { total } = useSelector();
+    // const { total, itemCount } = useSelector(mapState);
     const dispatch = useDispatch();
     const [billingAddress, setBillingAddress] = useState({ ...initialAddress });
     const [shippingAddress, setShippingAddress] = useState({ ...initialAddress });
     const [recipientName, setRecipientName] = useState('');
     const [nameOnCard, setNameOnCard] = useState('');
+
 
     const handleShipping = e => {
         const { name, value } = e.target;
@@ -88,12 +90,14 @@ const PaymentDetails = () => {
                     }
                 }
             }).then(({ paymentMethod }) => {
-                
+
                 stripe.confirmCardPayment(clientSecret, {
                     payment_method: paymentMethod.id
                 })
                     .then(({ paymentIntent }) => {
-                        console.log(paymentIntent)
+                        dispatch(
+                            clearCart()
+                        )
                     });
 
             })

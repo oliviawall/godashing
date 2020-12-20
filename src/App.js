@@ -1,4 +1,4 @@
-import React, { useEffect  } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
@@ -17,13 +17,12 @@ import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import WithSub from './hoc/withSub';
 
-
 // layouts //
 import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
 import AdminLayout from './layouts/AdminLayout';
 import DashboardLayout from './layouts/DashboardLayout';
- 
+
 // pages //
 import Homepage from './pages/Homepage';
 import Search from './pages/Search';
@@ -43,27 +42,26 @@ import './default.scss';
 
 
 
-
 const App = props => {
   const dispatch = useDispatch();
- 
+
 
   useEffect(() => {
     dispatch(checkUserSession());
 
   }, [])
 
-    return (
-      <div className="App">
-        <AdminToolbar />
-        <Switch>  
-           <Route exact path='/' render={() => ( 
-            <HomepageLayout>
-              <Homepage />
-            </HomepageLayout> 
-          )} />
+  return (
+    <div className="App">
+      <AdminToolbar />
+      <Switch>
+        <Route exact path='/' render={() => (
+          <HomepageLayout>
+            <Homepage />
+          </HomepageLayout>
+        )} />
 
-          <Route exact path="/search" render={() => (
+        <Route exact path="/search" render={() => (
           <MainLayout>
             <Search />
           </MainLayout>
@@ -78,29 +76,29 @@ const App = props => {
             <Payment />
           </MainLayout>
         )} />
-          <Route path='/employeeregistration' render={() =>  (
-            <MainLayout>
-              <EmployeeSignup />
-            </MainLayout>
-          )} />
-          <Route path='/employerregistration' render={() =>  (
-            <MainLayout>
-              <EmployerSignup />
-            </MainLayout>
-          )} />
-          <Route path='/login' 
-          render={() =>  (
+        <Route path='/employeeregistration' render={() => (
+          <MainLayout>
+            <EmployeeSignup />
+          </MainLayout>
+        )} />
+        <Route path='/employerregistration' render={() => (
+          <MainLayout>
+            <EmployerSignup />
+          </MainLayout>
+        )} />
+        <Route path='/login'
+          render={() => (
             <MainLayout>
               <Login />
             </MainLayout>
           )} />
-            <Route path='/carousel' 
-          render={() =>  (
+        <Route path='/carousel'
+          render={() => (
             <MainLayout>
               <Carousel />
             </MainLayout>
           )} />
-          <Route path='/recovery' render={() => (
+        <Route path='/recovery' render={() => (
           <MainLayout>
             <Recovery />
           </MainLayout>
@@ -110,64 +108,64 @@ const App = props => {
          */}
         <Route exact path='/dashboard' render={() => (
           <WithAuth>
-          <DashboardLayout>
-            <Dashboard />
-          </DashboardLayout>
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
           </WithAuth>
         )} />
         <Route path='/about'
-        render={() => (
-          <MainLayout>
-            <About />
-          </MainLayout>
-        )} />
-          <Route path='/Team'
-        render={() => (
-          
-          <MainLayout>
-            <Team />
-          </MainLayout>
-          
-        )} />
-          <Route path='/videogrid' render={() => (
+          render={() => (
+            <MainLayout>
+              <About />
+            </MainLayout>
+          )} />
+        <Route path='/Team'
+          render={() => (
+
+            <MainLayout>
+              <Team />
+            </MainLayout>
+
+          )} />
+        <Route path='/videogrid' render={() => (
           <MainLayout>
             <VideoGrid />
           </MainLayout>
-      )} />
-        
+        )} />
+
         <Route path='/contact'
-        render={() => (
-          <MainLayout>
-            <Contact />
-          </MainLayout>
-        )} />
-         <Route path='/paypal'
-        render={() => (
-          <MainLayout>
-            <Paypal />
-          </MainLayout>
-        )} />
+          render={() => (
+            <MainLayout>
+              <Contact />
+            </MainLayout>
+          )} />
+        <Route path='/paypal'
+          render={() => (
+            <MainLayout>
+              <Paypal />
+            </MainLayout>
+          )} />
         <Route path="/cart" render={() => (
           <MainLayout>
             <Cart />
           </MainLayout>
         )} />
         <Route path='/stripe'
-        render={() => (
-          <MainLayout>
-            <CardInput />
-          </MainLayout>
-        )} />
-        <Route path='/admin' render={() => ( 
+          render={() => (
+            <MainLayout>
+              <CardInput />
+            </MainLayout>
+          )} />
+        <Route path='/admin' render={() => (
           <WithAdminAuth>
-          <AdminLayout>
-            <Admin />
-          </AdminLayout>   
+            <AdminLayout>
+              <Admin />
+            </AdminLayout>
           </WithAdminAuth>
         )} />
-        </Switch>
-      </div>
-    );
-  }
+      </Switch>
+    </div>
+  );
+}
 
 export default App;

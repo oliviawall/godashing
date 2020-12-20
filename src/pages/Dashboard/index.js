@@ -10,8 +10,8 @@ import store from '../../redux/createStore';
 //dashboard is child comp.
 const Dashboard = props => {
     const [subscriptionStatus, dispatch] = useReducer(userReducer, userTypes.SUBSCRIPTION_STATUS);
-    const [ subscriptionActive, setSubscription ] = useState(false);
-    let status = useDispatch({type: userTypes.SUBSCRIPTION_STATUS});
+    const [subscriptionActive, setSubscription] = useState(false);
+    let status = useDispatch({ type: userTypes.SUBSCRIPTION_STATUS });
     console.log(status);
     // [ ] Send out a dispatch to get subscription status
     // [ ] Assign the status to subscriptionActive state
@@ -27,7 +27,6 @@ const Dashboard = props => {
     else {
         return (
             <h2>
-    
                 Non-Subscribed Content
             </h2>
         );

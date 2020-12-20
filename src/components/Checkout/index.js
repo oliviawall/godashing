@@ -17,7 +17,7 @@ const Checkout = ({ }) => {
   const { cartItems, total } = useSelector(mapState);
 
   const errMsg = 'You have no items in your cart.';
-
+ 
   return (
     <div className="checkout">
       <h1>

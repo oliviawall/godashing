@@ -50,11 +50,12 @@ const EmployeeSignup = props => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
     
+    // currently app directs user to subscription page upon creating an account. but as I have not successfully connected the Stripe B.E. it never allows access to their dashboard. This should change upon pressing "pay". This is when I wrap the dashboard component in both "withAuth" and "withSub" which should solve this upon B.E. host listening and receiving calls...
 
     useEffect(() => {
         if (currentUser) {
           reset();
-          history.push('/paypal');
+          history.push('/payment');
         }
 
     }, [currentUser]);
