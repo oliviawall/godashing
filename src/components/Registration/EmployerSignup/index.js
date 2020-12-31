@@ -118,7 +118,7 @@ const EmployerSignup = props => {
                     <Button type='submit'>
                         Register
                     </Button>
-
+ 
                 </form>
             </div>
         </AuthWrapper>
