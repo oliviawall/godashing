@@ -35,10 +35,11 @@ app.post('/payments/create', async (req, res) => {
 
 app.get('/', (req, res) => {
     console.log("HELLO!");
-    
+
     res
         .status(404)
         .send('404, Not Found.');
 });
 
 exports.api = functions.https.onRequest(app);
+

@@ -26,7 +26,7 @@ const EmployerSignup = props => {
     useEffect(() => {
         if (currentUser) {
           reset();
-          history.push('/paypal');
+          history.push('/payment');
         }
 
     }, [currentUser]);
@@ -46,15 +46,15 @@ const EmployerSignup = props => {
     setErrors([]);
 };
 
-const handleFormSubmit = event => {
+const handleFormSubmit = (event) => {
     event.preventDefault();
-    let subscriptionActive = false;
+    // let subscriptionActive = false;
     dispatch(signUpUserStart({
         displayName,
         email,
         password,
         confirmPassword,
-        subscriptionActive,
+        // subscriptionActive,
     }));
 
 }
