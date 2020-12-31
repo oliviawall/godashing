@@ -25,39 +25,39 @@ const EmployerSignup = props => {
 
     useEffect(() => {
         if (currentUser) {
-          reset();
-          history.push('/paypal');
+            reset();
+            history.push('/payment');
         }
 
     }, [currentUser]);
 
     useEffect(() => {
         if (Array.isArray(userErr) && userErr.length > 0) {
-          setErrors(userErr);
+            setErrors(userErr);
         }
-        
+
     }, [userErr]);
 
-  const reset = () => {
-    setDisplayName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setErrors([]);
-};
+    const reset = () => {
+        setDisplayName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setErrors([]);
+    };
 
-const handleFormSubmit = event => {
-    event.preventDefault();
-    let subscriptionActive = false;
-    dispatch(signUpUserStart({
-        displayName,
-        email,
-        password,
-        confirmPassword,
-        subscriptionActive,
-    }));
+    const handleFormSubmit = event => {
+        event.preventDefault();
+        // let subscriptionActive = false;
+        dispatch(signUpUserStart({
+            displayName,
+            email,
+            password,
+            confirmPassword,
+            // subscriptionActive,
+        }));
 
-}
+    }
 
     const configAuthWrapper = {
         headline: 'Business Registration'
@@ -68,17 +68,17 @@ const handleFormSubmit = event => {
 
             <div className='formWrap'>
 
-            {errors.length > 0 && (
-                <ul>
-                    {errors.map((err, index) => {
-                        return (
-                            <li key={index}>
-                                {err}
-                            </li>
-                        );
-                    })}
-                </ul>
-            )}
+                {errors.length > 0 && (
+                    <ul>
+                        {errors.map((err, index) => {
+                            return (
+                                <li key={index}>
+                                    {err}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
 
                 <form onSubmit={handleFormSubmit}>
 
@@ -114,11 +114,11 @@ const handleFormSubmit = event => {
                         handleChange={e => setConfirmPassword(e.target.value)}
 
                     />
-                    
+
                     <Button type='submit'>
                         Register
                     </Button>
-                  
+
                 </form>
             </div>
         </AuthWrapper>
