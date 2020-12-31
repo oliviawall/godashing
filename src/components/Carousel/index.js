@@ -1,81 +1,55 @@
 import React from 'react';
-// import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel';
+import { Carousel, Caption, Row, Col } from 'react-bootstrap';
 import './styles.scss';
 
 // images
-import img1 from '../../assets/dashing.png'
-import img2 from '../../assets/water.png'
-import img3 from '../../assets/bold.png'
+import LogoInfo from '../../assets/dashing.png'
+import RainImg from '../../assets/water.png'
+import WalkingSlide from '../../assets/bold.png'
 
-const CarouselHome = props => {
+export default function CarouselHome() {
     return (
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div className='carousel-inner' roll='listbox'>
-                <div className='item active'>
-                    <img src={img2} alt='first' />
-                    <div className='carousel-caption'>
-                        <h3>First Slide</h3>
-                        <p>Description</p>
-                    </div>
-                </div>
-                <div className='item'>
-                    <img src={img2} alt='second' />
-                    <div className='carousel-caption'>
-                        <h3>Second Slide</h3>
-                        <p>Description</p>
-                    </div>
-                </div>
-                <div className='item'>
-                    <img src={img3} alt='third' />
-                    <div className='carousel-caption'>
-                        <h3>Third Slide</h3>
-                        <p>Description</p>
-                    </div>
-                </div>
+        <div className='carousel'>
+            <Row>
+                <Col xs={12} md={12} lg={12}>
+                    <Carousel>
+                        <Carousel.Item interval={3000}>
+                            <img
+                                className='d-block w-100'
+                                src={LogoInfo}
+                                alt='First slide'
+                            />
+                            <Carousel.Caption>
+                                <h3>First slide label</h3>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item interval={500}>
+                            <img
+                                className='d-block w-100'
+                                src={RainImg}
+                                alt='Second Slide'
+                            />
+                            <Carousel.Caption>
+                                <h3>Second slide label</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className='d-block w-100'
+                                src={WalkingSlide}
+                                alt='Third slide'
+                            />
+                            <Carousel.Caption>
+                                <h3>Third slide label</h3>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
+                </Col>
+            </Row>
 
-                <a className='left carousel-control' img src={img1} roll='button' data-slide='prev'>
-                    <span className='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
-                    <span className='sr-only'>Previous</span>
-                </a>
-                <a className='right carousel-control' img src={img3} roll='button' data-slide='next'>
-                    <span className='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
-                    <span className='sr-only'>Next</span>
-                </a>
-
-            </div>
         </div>
     );
 }
-export default CarouselHome;
-
-//         <Carousel>
-
-//             <div className='image-wrapper'>
-//                 <img id ='test'
-//                     src={img1}
-//                     alt="First slide"
-//                 />
-//             </div>
-//             <div className='image-wrapper'>
-//                 <img id ='test'
-//                     src={img2}
-//                     alt="Third slide"
-//                 />
-//             </div>
-//             <div className='image-wrapper'>
-//                 <img id ='test'
-//                     src={img3}
-//                     alt="Third slide"
-//                 />
-//             </div>
-//         </Carousel>
-//     )
-// }
-
-// export default CarouselHome;
