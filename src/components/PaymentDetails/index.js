@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import FormInput from './../forms/FormInput';
-import Button from './../forms/Button';
+// import Button from './../forms/Button';
 import { CountryDropdown } from 'react-country-region-selector';
 import { apiInstance } from './../../Utils';
 import { selectCartTotal, selectCartItemsCount } from './../../redux/Cart/cart.selectors';
 import { clearCart } from './../../redux/Cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 import './styles.scss';
 
@@ -36,15 +37,16 @@ const PaymentDetails = () => {
     const [recipientName, setRecipientName] = useState('');
     const [nameOnCard, setNameOnCard] = useState('');
 
-
+    //shippable input values
     const handleShipping = e => {
-        const { name, value } = e.target;
+        const { name, value } = e.target.value;
         setShippingAddress({
             ...shippingAddress,
             [name]: value
         });
     };
 
+    //billing input values
     const handleBilling = e => {
         const { name, value } = e.target;
         setBillingAddress({
@@ -53,58 +55,63 @@ const PaymentDetails = () => {
         });
     };
 
+    //this is being called 
+    const formSubmit = () => {
+        console.log('do something')
+       
+    }
 
-    const handleFormSubmit = async e => {
-        e.preventDefault();
-        const cardElement = elements.getElement('card');
+    // const handleFormSubmit = async e => {
+    //     e.preventDefault();
+    //     const cardElement = elements.getElement('card');
 
-        if (
-            !shippingAddress.line1 || !shippingAddress.city ||
-            !shippingAddress.state || !shippingAddress.zip_code ||
-            !shippingAddress.country || !billingAddress.line1 ||
-            !billingAddress.city || !billingAddress.state ||
-            !billingAddress.zip_code || !billingAddress.country ||
-            !recipientName || !nameOnCard
-        ) {
-            return;
-        }
+    //     if (
+    //         !shippingAddress.line1 || !shippingAddress.city ||
+    //         !shippingAddress.state || !shippingAddress.zip_code ||
+    //         !shippingAddress.country || !billingAddress.line1 ||
+    //         !billingAddress.city || !billingAddress.state ||
+    //         !billingAddress.zip_code || !billingAddress.country ||
+    //         !recipientName || !nameOnCard
+    //     ) {
+    //         return;
+    //     }
 
-        apiInstance.post('/payments/create', {
-            amount: 4.99,
-            // line above should read amount: total * 100, but crashes app
-            shipping: {
-                name: recipientName,
-                address: {
-                    ...shippingAddress
-                }
-            }
-        }).then(({ data: clientSecret }) => {
+    //     apiInstance.post('/payments/create', {
+    //         amount: 4.99,
+    //         // line above should read amount: total * 100, but crashes app
+    //         shipping: {
+    //             name: recipientName,
+    //             address: {
+    //                 ...shippingAddress
+    //             }
+    //         }
+    //     }).then(({ data: clientSecret }) => {
 
-            stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-                billing_details: {
-                    name: nameOnCard,
-                    address: {
-                        ...billingAddress
-                    }
-                }
-            }).then(({ paymentMethod }) => {
+    //         stripe.createPaymentMethod({
+    //             type: 'card',
+    //             card: cardElement,
+    //             billing_details: {
+    //                 name: nameOnCard,
+    //                 address: {
+    //                     ...billingAddress
+    //                 }
+    //             }
+    //         }).then(({ paymentMethod }) => {
 
-                stripe.confirmCardPayment(clientSecret, {
-                    payment_method: paymentMethod.id
-                })
-                    .then(({ paymentIntent }) => {
-                        dispatch(
-                            clearCart()
-                        )
-                    });
+    //             stripe.confirmCardPayment(clientSecret, {
+    //                 payment_method: paymentMethod.id
+    //             })
+    //                 .then(({ paymentIntent }) => {
+    //                     dispatch(
+    //                         clearCart()
+    //                     )
+    //                 });
 
-            })
+    //         })
 
-        });
+    //     });
 
-    };
+    // };
 
     const configCardElement = {
         iconStyle: 'solid',
@@ -116,9 +123,11 @@ const PaymentDetails = () => {
         hidePostalCode: true
     };
 
+
     return (
         <div className='paymentDetails'>
-            <form onSubmit={handleFormSubmit}>
+            {/* onSubmit={handleFormSubmit} */}
+            <form>
 
                 <div className='group'>
                     <h2>
@@ -267,11 +276,15 @@ const PaymentDetails = () => {
                     />
                 </div>
 
-                <Button
+                <Button onChange={formSubmit()}>
+                    Submit
+                </Button>
+
+                {/* <Button
                     type='submit'
                 >
                     Pay Now
-                </Button>
+                </Button> */}
             </form>
         </div>
     );
