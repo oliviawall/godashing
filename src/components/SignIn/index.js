@@ -26,9 +26,9 @@ const SignIn = props => {
     // const tags = ['name', 'email'];
 
     useEffect(() => {
-        if (currentUser 
+        if (currentUser
             // && isSubscribed
-            ) {
+        ) {
             resetForm();
             history.push('/dashboard');
         }
