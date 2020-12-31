@@ -5,6 +5,8 @@ const stripe = require('stripe')('sk_test_51HdMs9HOAxUNfXsh9n6S08wbkI0gEjw5NulfS
 
 const app = express();
 
+const testError = `i'm recieving some data`;
+
 app.use(cors({
     origin: true
 }));
@@ -28,7 +30,8 @@ app.post('/payments/create', async (req, res) => {
             .status(500)
             .json({
                 statusCode: 500,
-                message: err.message
+                // message: err.message
+                message: testError
             });
     }
 })
