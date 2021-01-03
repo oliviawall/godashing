@@ -1,57 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import blueBackdrop from './../../assets/blueBackdrop.png';
+import React from 'react';
+import Carousel from './../../components/Carousel';
 import './styles.scss';
 
 
 const Directory = props => {
 
     return (
-
         <div className='directory'>
-            <div className='wrap'>
-                
-                    <div
-                        className='item'
-                        style={{
-                            backgroundImage: `url(${blueBackdrop})`
-                        }}
-                    ><div className='parallax'>
-                        <div id='test'>
-                            <a className='test' href='/about'>Why Go Dashing?</a>
-                        </div>
-                    </div>
-                    <div className='more'>
-                        
-                    </div>
-                    <div
-                        style={{
-                            backgroundImage: `url(${blueBackdrop})`
-                        }}
-                    ></div>
-                </div>
-            </div>
+            <Carousel />
         </div>
     );
 };
 
 export default Directory;
 
+// Previous Landing page component called Directory replaced by Carousel slides --> 
+
+        // <div className='directory'>
+        //     <div className='wrap'>
+
+        //             <div
+        //                 className='item'
+        //                 style={{
+        //                     backgroundImage: `url(${blueBackdrop})`
+        //                 }}
+        //             ><div className='parallax'>
+        //                 <div id='test'>
+        //                     <a className='test' href='/about'>Why Go Dashing?</a>
+        //                 </div>
+        //             </div>
+        //             <div className='more'>
+
+        //             </div>
+        //             <div
+        //                 style={{
+        //                     backgroundImage: `url(${blueBackdrop})`
+        //                 }}
+        //             ></div>
+        //         </div>
+        //     </div>
+        // </div>
+
+
 // If I want to create a parallax effect -->
 // export default function App() {
 //     const [offset, setOffset] = useState(0);
-  
+
 //     useEffect(() => {
 //       function handleScroll() {
 //         setOffset(window.pageYOffset);
 //       }
-  
+
 //       window.addEventListener("scroll", handleScroll);
-  
+
 //       return () => {
 //         window.removeEventListener("scroll", handleScroll);
 //       };
 //     }, [offset]);
-  
+
 //     return (
 //       <div className="App">
 //         <section className="hero">
@@ -135,7 +141,7 @@ export default Directory;
 //           quis iusto quibusdam, odit debitis cumque non maiores reiciendis et
 //           accusantium! Hic commodi soluta laborum dolor?
 //         </p>
-        
+
 //         {/* Make space to scroll */}
 //         <section className="overflow" />
 //         <p>

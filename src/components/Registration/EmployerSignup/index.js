@@ -60,7 +60,7 @@ const EmployerSignup = props => {
     }
 
     const configAuthWrapper = {
-        headline: 'Business Registration'
+        headline: 'Hiring Manager Signup'
     };
 
     return (

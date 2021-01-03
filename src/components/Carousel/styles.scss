@@ -9,15 +9,19 @@
 
 .carousel-control-next-icon:after
 {
-  content: '>';
-  font-size: 29px;
-  color: black;
+  content: '|';
+  position: absolute;
+  top: 50%; /* pushes the icon in the middle of the height */
+  z-index: 5;
+  display: inline-block;
 }
 
 .carousel-control-prev-icon:after {
-  content: '<';
-  font-size: 29px;
-  color: black;
+  content: '|';
+  position: absolute;
+  top: 50%; /* pushes the icon in the middle of the height */
+  z-index: 5;
+  display: inline-block;
 }
     // #test img {
     //     margin-top: 25px;

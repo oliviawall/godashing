@@ -1,102 +1,104 @@
-.directory {
-    height: 100%;
-    background-color: rgb(78, 73, 73);
+// previous directory SCSS before Carousel -->
 
-    .wrap {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-    }
-    .item {
-        position: relative;
-        width: 100%;
-        height: 400%;
-        float: left;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+// .directory {
+//     height: 100%;
+//     background-color: rgb(78, 73, 73);
 
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            background-color: rgba(0,0,0,0.3);
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+//     .wrap {
+//         display: inline-block;
+//         width: 100%;
+//         height: 100%;
+//     }
+//     .item {
+//         position: relative;
+//         width: 100%;
+//         height: 400%;
+//         float: left;
+//         background-attachment: fixed;
+//         background-position: center;
+//         background-repeat: no-repeat;
+//         background-size: cover;
+
+//         &::after {
+//             content: '';
+//             position: absolute;
+//             top: 0; left: 0;
+//             background-color: rgba(0,0,0,0.3);
+//             width: 100%;
+//             height: 100%;
+//             z-index: 1;
+//         }
         
-        // for all tablets and phones
-        @media only screen and (max-device-width: 1366px) {
-            .item {
-              background-attachment: scroll;
-            }
-          }
+//         // for all tablets and phones
+//         @media only screen and (max-device-width: 1366px) {
+//             .item {
+//               background-attachment: scroll;
+//             }
+//           }
 
-        a {
-            position: absolute;
-            top: 10%; left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            font-size: 2rem;
-            line-height: 1;
-            font-weight: 400;
-            text-transform: uppercase;
-            background: white;
-            padding: 8px 10px;
-            border: 1px solid black;
-        }
+//         a {
+//             position: absolute;
+//             top: 10%; left: 50%;
+//             -webkit-transform: translate(-50%, -50%);
+//             -moz-transform: translate(-50%, -50%);
+//             transform: translate(-50%, -50%);
+//             z-index: 2;
+//             font-size: 2rem;
+//             line-height: 1;
+//             font-weight: 400;
+//             text-transform: uppercase;
+//             background: white;
+//             padding: 8px 10px;
+//             border: 1px solid black;
+//         }
         
-    }
-}
+//     }
+// }
 
-#test {
-    margin-top: 25px;
-    font-size: 21px;
-    text-align: center;
-    text-decoration: none;
+// #test {
+//     margin-top: 25px;
+//     font-size: 21px;
+//     text-align: center;
+//     text-decoration: none;
 
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
-}
+//     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+//        -moz-animation: fadein 2s; /* Firefox < 16 */
+//         -ms-animation: fadein 2s; /* Internet Explorer */
+//          -o-animation: fadein 2s; /* Opera < 12.1 */
+//             animation: fadein 2s;
+// }
 
-#test a:hover {
-    text-decoration: none;
-}
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: .5; }
-}
+// #test a:hover {
+//     text-decoration: none;
+// }
+// @keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: .5; }
+// }
 
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: .5; }
-}
+// /* Firefox < 16 */
+// @-moz-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: .5; }
+// }
 
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: .5; }
-}
+// /* Safari, Chrome and Opera > 12.1 */
+// @-webkit-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: .5; }
+// }
 
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: .5; }
-}
+// /* Internet Explorer */
+// @-ms-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: .5; }
+// }
 
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: .5; }
-}
+// /* Opera < 12.1 */
+// @-o-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: .5; }
+// }
 
 
 // TESTING FOR CUTOUT TEXT:

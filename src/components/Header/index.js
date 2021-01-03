@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { signOutUserStart } from './../../redux/User/user.actions';
 import './styles.scss';
 import { Link } from 'react-router-dom';
@@ -15,109 +15,109 @@ const mapState = ({ user }) => ({
 const Header = props => {
     const dispatch = useDispatch();
     const { currentUser } = useSelector(mapState);
-    const [ subscriptionActive, setSubscription ] = useState(false);
+    const [subscriptionActive, setSubscription] = useState(false);
 
     const signOut = () => {
         dispatch(signOutUserStart());
     };
 
-    useEffect (() => { 
-        console.log ("currentUser:\n==== \=======\n",currentUser)
+    useEffect(() => {
+        console.log("currentUser:\n==== \=======\n", currentUser)
 
-        if (currentUser) {setSubscription(true)}
+        if (currentUser) { setSubscription(true) }
 
-        else if(!currentUser) {
+        else if (!currentUser) {
             // currentUser = false;
             setSubscription(false)
-        }   
+        }
     })
- 
+
     return (
-    <header className='header'>
-        <div className='wrap'>
-            <div className='logo'>
-                <Link to='/'>
-                    <img src={Logo} alt='Dashing LOGO' />
-                </Link>
-            </div>
-
-        <div className='callToActions'>
-
-        {currentUser && subscriptionActive &&(
-            <ul>
-                <li>
-                    <Link to='/dashboard'>
-                    My Profile
+        <header className='header'>
+            <div className='wrap'>
+                <div className='logo'>
+                    <Link to='/'>
+                        <img src={Logo} alt='Dashing LOGO' />
                     </Link>
-                     </li>
-                <li>
-                    <span onClick={() => signOut()}>
-                        LogOut
+                </div>
+
+                <div className='callToActions'>
+
+                    {currentUser && subscriptionActive && (
+                        <ul>
+                            <li>
+                                <Link to='/dashboard'>
+                                    My Profile
+                    </Link>
+                            </li>
+                            <li>
+                                <span onClick={() => signOut()}>
+                                    LogOut
                     </span>
-                </li>
-            </ul>
-        )}
+                            </li>
+                        </ul>
+                    )}
 
-            {!currentUser || currentUser === null && (
-                
-                <ul>
-                    <li>
-                    <Link to='/employeeregistration'>
-                    Job Seekers
+                    {!currentUser || currentUser === null && (
+
+                        <ul>
+                            <li>
+                                <Link to='/employeeregistration'>
+                                    Job Seekers
                     </Link>
-                     </li>
-                    <li>
-                    <li>
-                    <Link to='/employerregistration'>
-                    Businesses
+                            </li>
+                            <li>
+                                <li>
+                                    <Link to='/employerregistration'>
+                                        Businesses
                     </Link>
-                     </li>
-                    <Link to='/login'>
-                     Login
+                                </li>
+                                <Link to='/login'>
+                                    Login
                     </Link>
-                    </li>
-                    </ul>
-                  )}
-                  {!subscriptionActive && (
-                <ul>
-                      <li>
-                    <Link to='/contact'>
-                    Contact
+                            </li>
+                        </ul>
+                    )}
+                    {!subscriptionActive && (
+                        <ul> <li>
+                            <Link to='/employeeregistration'>
+                                Job Seekers
                     </Link>
-                     </li>
-                     <li>
-                    <Link to='/team'>
-                    Meet the Team
+                        </li>
+                            <li>
+                                <li>
+                                    <Link to='/employerregistration'>
+                                        Hiring Managers
                     </Link>
-                     </li>
-                    <li>
-                    <Link to='/employeeregistration'>
-                    Job Seekers
+                                </li>
+                                <li>
+                                    <Link to='/contact'>
+                                        Contact
                     </Link>
-                     </li>
-                    <li>
-                    <li>
-                    <Link to='/employerregistration'>
-                    Businesses
+                                </li>
+                                <li>
+                                    <Link to='/team'>
+                                        Meet the Team
                     </Link>
-                     </li>
-                    
-                    <Link to='/login'>
-                     Login
+                                </li>
+
+
+                                <Link to='/login'>
+                                    Login
                     </Link>
-                    </li>
-                    
-                    </ul>
-                  )}
-              </div>
+                            </li>
+
+                        </ul>
+                    )}
+                </div>
             </div>
         </header>
     );
 };
 
 Header.defaultProps = {
-    currentUser: null 
-    
+    currentUser: null
+
 };
 
 export default Header;

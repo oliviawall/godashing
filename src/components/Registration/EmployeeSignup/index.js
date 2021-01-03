@@ -88,7 +88,7 @@ const EmployeeSignup = props => {
     }
 
     const configAuthWrapper = {
-        headline: 'Personal Registration'
+        headline: 'Personal Signup'
     };
 
     return (
