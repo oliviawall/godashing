@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import FormInput from './../forms/FormInput';
-// import Button from './../forms/Button';
+
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { CountryDropdown } from 'react-country-region-selector';
 import { apiInstance } from './../../Utils';
+
 import { selectCartTotal, selectCartItemsCount } from './../../redux/Cart/cart.selectors';
 import { clearCart } from './../../redux/Cart/cart.actions';
 import { createStructuredSelector } from 'reselect';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { Button } from 'react-bootstrap';
 
 import './styles.scss';
 
-const initialAddress = {
+const initialAddress = Object.freeze({
     line1: '',
     line2: '',
     city: '',
     state: '',
     zip_code: '',
     country: '',
-};
+});
 
 const mapState = createStructuredSelector({
     total: selectCartTotal,
@@ -33,85 +35,77 @@ const PaymentDetails = () => {
     // const { total, itemCount } = useSelector(mapState);
     const dispatch = useDispatch();
     const [billingAddress, setBillingAddress] = useState({ ...initialAddress });
-    const [shippingAddress, setShippingAddress] = useState({ ...initialAddress });
     const [recipientName, setRecipientName] = useState('');
     const [nameOnCard, setNameOnCard] = useState('');
 
-    //shippable input values
-    const handleShipping = e => {
-        const { name, value } = e.target.value;
-        setShippingAddress({
-            ...shippingAddress,
-            [name]: value
-        });
-    };
-
-    //billing input values
     const handleBilling = e => {
         const { name, value } = e.target;
         setBillingAddress({
             ...billingAddress,
             [name]: value
         });
+        // setBillingAddress({
+        //     ...billingAddress,
+        //     [e.target.value]: e.target.value.trim()
+        // })
     };
 
-    //this is being called 
-    const formSubmit = () => {
-        console.log('do something')
-       
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('submission', billingAddress)
     }
 
-    // const handleFormSubmit = async e => {
-    //     e.preventDefault();
-    //     const cardElement = elements.getElement('card');
+    const handleFormSubmit = async e => {
+        e.preventDefault();
+        const cardElement = elements.getElement('card');
 
-    //     if (
-    //         !shippingAddress.line1 || !shippingAddress.city ||
-    //         !shippingAddress.state || !shippingAddress.zip_code ||
-    //         !shippingAddress.country || !billingAddress.line1 ||
-    //         !billingAddress.city || !billingAddress.state ||
-    //         !billingAddress.zip_code || !billingAddress.country ||
-    //         !recipientName || !nameOnCard
-    //     ) {
-    //         return;
-    //     }
+        if (
+            // !shippingAddress.line1 || !shippingAddress.city ||
+            // !shippingAddress.state || !shippingAddress.zip_code ||
+            // !shippingAddress.country || 
+            !billingAddress.line1 ||
+            !billingAddress.city || !billingAddress.state ||
+            !billingAddress.zip_code || !billingAddress.country ||
+            !recipientName || !nameOnCard
+        ) {
+            return;
+        }
 
-    //     apiInstance.post('/payments/create', {
-    //         amount: 4.99,
-    //         // line above should read amount: total * 100, but crashes app
-    //         shipping: {
-    //             name: recipientName,
-    //             address: {
-    //                 ...shippingAddress
-    //             }
-    //         }
-    //     }).then(({ data: clientSecret }) => {
+        apiInstance.post('/payments/create', {
+            amount: 4.99,
+            // line above should read amount: total * 100, but crashes app
+            shipping: {
+                name: recipientName,
+                address: {
+                    // ...shippingAddress
+                }
+            }
+        }).then(({ data: clientSecret }) => {
 
-    //         stripe.createPaymentMethod({
-    //             type: 'card',
-    //             card: cardElement,
-    //             billing_details: {
-    //                 name: nameOnCard,
-    //                 address: {
-    //                     ...billingAddress
-    //                 }
-    //             }
-    //         }).then(({ paymentMethod }) => {
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+                billing_details: {
+                    name: nameOnCard,
+                    address: {
+                        ...billingAddress
+                    }
+                }
+            }).then(({ paymentMethod }) => {
 
-    //             stripe.confirmCardPayment(clientSecret, {
-    //                 payment_method: paymentMethod.id
-    //             })
-    //                 .then(({ paymentIntent }) => {
-    //                     dispatch(
-    //                         clearCart()
-    //                     )
-    //                 });
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: paymentMethod.id
+                })
+                    .then(({ paymentIntent }) => {
+                        dispatch(
+                            clearCart()
+                        )
+                    });
+            })
 
-    //         })
+        });
 
-    //     });
-
-    // };
+    };
 
     const configCardElement = {
         iconStyle: 'solid',
@@ -123,82 +117,9 @@ const PaymentDetails = () => {
         hidePostalCode: true
     };
 
-
     return (
         <div className='paymentDetails'>
-            {/* onSubmit={handleFormSubmit} */}
             <form>
-
-                <div className='group'>
-                    <h2>
-                        Shipping Address
-                    </h2>
-
-                    <FormInput
-                        required
-                        placeholder='Recipient Name'
-                        name='recipientName'
-                        handleChange={e => setRecipientName(e.target.value)}
-                        value={recipientName}
-                        type='text'
-                    />
-                    <FormInput
-                        required
-                        placeholder='Line 1'
-                        name='line1'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.line1}
-                        type='text'
-                    />
-                    <FormInput
-                        placeholder='Line 2'
-                        name='line2'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.line2}
-                        type='text'
-                    />
-
-                    <FormInput
-                        required
-                        placeholder='City'
-                        name='city'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.city}
-                        type='text'
-                    />
-                    <FormInput
-                        required
-                        placeholder='State'
-                        name='state'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.state}
-                        type='text'
-                    />
-                    <FormInput
-                        required
-                        placeholder="Zip Code"
-                        name="zip_code"
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.zip_code}
-                        type="text"
-                    />
-                    <div className='formRow checkoutInput'>
-                        <CountryDropdown
-                            required
-                            onChange={val => handleShipping({
-                                target: {
-                                    name: 'country',
-                                    value: val
-                                }
-                            })}
-                            name='country'
-                            value={shippingAddress.country}
-                            valueType='short'
-                        />
-                    </div>
-
-                </div>
-
                 <div className='group'>
                     <h2>
                         Billing Details
@@ -231,25 +152,26 @@ const PaymentDetails = () => {
                         required
                         placeholder='City'
                         name='city'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.city}
+                        handleChange={e => handleBilling(e)}
+                        value={billingAddress.city}
                         type='text'
                     />
                     <FormInput
                         required
                         placeholder='State'
                         name='state'
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.state}
+                        handleChange={e => handleBilling(e)}
+                        value={billingAddress.state}
                         type='text'
                     />
                     <FormInput
+                        //validation no more than X number
                         required
                         placeholder="Zip Code"
                         name="zip_code"
-                        handleChange={e => handleShipping(e)}
-                        value={shippingAddress.zip_code}
-                        type="text"
+                        handleChange={e => handleBilling(e)}
+                        value={billingAddress.zip_code}
+                        type='text'
                     />
                     <div className='formRow checkoutInput'>
                         <CountryDropdown
@@ -275,16 +197,7 @@ const PaymentDetails = () => {
                         options={configCardElement}
                     />
                 </div>
-
-                <Button onChange={formSubmit()}>
-                    Submit
-                </Button>
-
-                {/* <Button
-                    type='submit'
-                >
-                    Pay Now
-                </Button> */}
+                <Button onClick={handleSubmit}>Submit</Button>
             </form>
         </div>
     );
