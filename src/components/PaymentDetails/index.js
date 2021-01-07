@@ -74,12 +74,12 @@ const PaymentDetails = () => {
         apiInstance.post('/payments/create', {
             amount: 4.99,
             // line above should read amount: total * 100, but crashes app
-            shipping: {
-                name: recipientName,
-                address: {
-                    // ...shippingAddress
-                }
-            }
+            // shipping: {
+            //     name: recipientName,
+            //     address: {
+            //         // ...shippingAddress
+            //     }
+            // }
         }).then(({ data: clientSecret }) => {
 
             stripe.createPaymentMethod({
