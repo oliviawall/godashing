@@ -6,6 +6,7 @@ const INITIAL_STATE = {
     resetPasswordSuccess: false,
     userErr: []
 };
+console.log(INITIAL_STATE, 'INITIAL_STATE')
 
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {

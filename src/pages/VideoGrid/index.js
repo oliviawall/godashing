@@ -33,7 +33,8 @@ class VideoGrid extends Component {
                         <ziggeorecorder
                             ziggeo-popup
                             ziggeo-theme="minimalist"
-                            ziggeo-themecolor="blue">
+                            ziggeo-themecolor="blue"
+                            tags= {[<userReducer/>]}>
                         </ziggeorecorder>
                         </Row>
                     </Col>
