@@ -35,6 +35,7 @@ const Header = props => {
     return (
         <header className='header'>
             <div className='wrap'>
+
                 <div className='logo'>
                     <Link to='/'>
                         <img src={Logo} alt='Dashing LOGO' />
@@ -48,7 +49,7 @@ const Header = props => {
                             <li>
                                 <Link to='/dashboard'>
                                     My Profile
-                    </Link>
+                                </Link>
                             </li>
                             <li>
                                 <span onClick={() => signOut()}>
@@ -58,59 +59,73 @@ const Header = props => {
                         </ul>
                     )}
 
-                    {!currentUser || currentUser === null && (
+                    {/* Simplified navbar with dropdown on hover. Idea is to implement this idea within the Link function I have currently --> }
+                    {/* <div className='navbar'>
+                        <a href="#about">Mission</a>
+                        <a href="#news">Testimonials</a>
+                        <div className='dropdown'>
+                            <button className='dropbtn'>I'm Interested
+                        <i className='fa fa-caret-down'></i>
+                            </button>
+                            <div className='dropdown-content'>
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a> */}
+                                {!currentUser || currentUser === null && (
 
-                        <ul>
-                            <li>
-                                <Link to='/employeeregistration'>
-                                    Job Seekers
+                                    <ul>
+                                        <li>
+                                            <Link to='/employeeregistration'>
+                                                Job Seekers
                     </Link>
-                            </li>
-                            <li>
-                                <li>
-                                    <Link to='/employerregistration'>
-                                        Businesses
+                                        </li>
+                                        <li>
+                                            <li>
+                                                <Link to='/employerregistration'>
+                                                    Businesses
                     </Link>
-                                </li>
-                                <Link to='/login'>
-                                    Login
+                                            </li>
+                                            <Link to='/login'>
+                                                Login
                     </Link>
-                            </li>
-                        </ul>
-                    )}
-                    {!subscriptionActive && (
-                        <ul> <li>
-                            <Link to='/employeeregistration'>
-                                Job Seekers
+                                        </li>
+                                    </ul>
+                                )}
+                                {!subscriptionActive && (
+                                    <ul> <li>
+                                        <Link to='/employeeregistration'>
+                                            Job Seekers
                     </Link>
-                        </li>
-                            <li>
-                                <li>
-                                    <Link to='/employerregistration'>
-                                        Hiring Managers
+                                    </li>
+                                        <li>
+                                            <li>
+                                                <Link to='/employerregistration'>
+                                                    Hiring Managers
                     </Link>
-                                </li>
-                                <li>
-                                    <Link to='/contact'>
-                                        Contact
+                                            </li>
+                                            <li>
+                                                <Link to='/contact'>
+                                                    Contact
                     </Link>
-                                </li>
-                                <li>
-                                    <Link to='/team'>
-                                        Meet the Team
+                                            </li>
+                                            <li>
+                                                <Link to='/team'>
+                                                    Meet the Team
                     </Link>
-                                </li>
+                                            </li>
 
 
-                                <Link to='/login'>
-                                    Login
+                                            <Link to='/login'>
+                                                Login
                     </Link>
-                            </li>
+                                        </li>
 
-                        </ul>
-                    )}
+                                    </ul>
+                                )}</div>
+                        </div>
+                    {/* </div>
                 </div>
-            </div>
+            </div> */}
         </header>
     );
 };
