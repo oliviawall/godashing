@@ -11,7 +11,7 @@ const About = () => {
             <img class='aboutImg' src={AboutImage} alt='background' style={{ width: '100%', position: 'absolute', marginTop: '0%', height: '91%', zIndex: -1, objectFit: 'cover' }} />
             <Row>
                 <Col xs={12} md={12} lg={12}>
-                    <h1 className='aboutTitle' style={{ marginLeft: '4%', marginBottom: '4%', marginTop: '4%' }}>About Dashing</h1>
+                    <h1 className='aboutTitle' style={{ marginLeft: '4%', marginBottom: '4%', marginTop: '4%' }}>Our Mission</h1>
                 </Col>
             </Row>
             <div className='aboutContent'>
@@ -30,22 +30,31 @@ const About = () => {
                                 The goal is to take control of the first impression, all while becoming more than just another paper in a stack of resumes.
                                 With Dashing's easy-to-make online profiles, hiring managers can greatly reduce the time and costs of first wave,
                                 in-person interviews. Job applicants likewise can greatly increase the chances of getting a job/interview opportunity.
-                            
+                                <br />
+                                <br />
+                                <a href="https://www.facebook.com/DashingCo-113381857100452/" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="google"><i class="fa fa-google"></i></a>
+                                <a href="https://www.instagram.com/dashingco/" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+
                             </Card.Body>
                         </Card>
-                      
                     </Col>
                 </Row>
                 <br />
-                <Row>
-                    <Col xs={12}>
-                        <Link to='/employeeregistration'>
-                            <Button className='startTrial' type='submit' style={{ position: 'absolute', width: '50%', marginLeft: '25%' }}>
-                                Start Your 7 Day Free Trial
-                            </Button>
-                        </Link>
+                {/* <Row style={{ marginLeft: '0%' }}>
+                    <Col xs={12} md={12} lg={12}>
+                        <Card>
+                            <Card.Body> */}
+                                <Link to='/employeeregistration'>
+                                    <Button className='startTrial' type='submit' style={{ position: 'absolute', width: '50%', marginLeft: '25%' }}>
+                                        Start Your 7 Day Free Trial
+                                    </Button>
+                                </Link>
+                            {/* </Card.Body>
+                        </Card>
                     </Col>
-                </Row>
+                </Row> */}
             </div>
         </div>
     );

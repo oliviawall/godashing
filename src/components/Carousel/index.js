@@ -3,9 +3,12 @@ import { Carousel, Item, Caption, Row, Col } from 'react-bootstrap';
 import './styles.scss';
 
 // images
-import about from '../../assets/blueBackdrop.png'
-import testimonials from '../../assets/greenBackdrop.png'
-import signup from '../../assets/yellowBackdrop.png'
+import about from '../../assets/cover.png'
+import testimonials from '../../assets/wave.png'
+import signup from '../../assets/why.png'
+import gamechanger from '../../assets/gamechanger.png'
+import stats from '../../assets/stats.png'
+
 
 export default function CarouselHome() {
     return (
@@ -13,7 +16,7 @@ export default function CarouselHome() {
             <Row>
                 <Col xs={12} md={12} lg={12}>
                     <Carousel>
-                        <Carousel.Item interval={3500}>
+                        <Carousel.Item interval={10000}>
                             <img
                                 className='d-block w-100'
                                 src={about}
@@ -25,7 +28,7 @@ export default function CarouselHome() {
 
                             </Carousel.Caption>
                         </Carousel.Item>
-                        <Carousel.Item interval={3500}>
+                        <Carousel.Item interval={4500}>
                             <img
                                 className='d-block w-100'
                                 src={testimonials}
@@ -36,7 +39,7 @@ export default function CarouselHome() {
 
                             </Carousel.Caption>
                         </Carousel.Item>
-                        <Carousel.Item interval={3500}>
+                        <Carousel.Item interval={4500}>
                             <img
                                 className='d-block w-100'
                                 src={signup}
@@ -44,6 +47,30 @@ export default function CarouselHome() {
                             />
                             <Carousel.Caption>
                                 <h3>Join the momentum</h3>
+
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item interval={4500}>
+                            <img
+                                className='d-block w-100'
+                                src={gamechanger}
+                                alt='First slide'
+
+                            />
+                            <Carousel.Caption>
+                                <h3>About Dashing</h3>
+
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item interval={4500}>
+                            <img
+                                className='d-block w-100'
+                                src={stats}
+                                alt='First slide'
+
+                            />
+                            <Carousel.Caption>
+                                <h3>About Dashing</h3>
 
                             </Carousel.Caption>
                         </Carousel.Item>

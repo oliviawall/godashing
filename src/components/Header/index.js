@@ -4,7 +4,7 @@ import { signOutUserStart } from './../../redux/User/user.actions';
 import './styles.scss';
 import { Link } from 'react-router-dom';
 
-import Logo from './../../assets/logo.png';
+import Logo from './../../assets/DashingNew.png';
 
 const mapState = ({ user }) => ({
     currentUser: user.currentUser,
@@ -71,6 +71,7 @@ const Header = props => {
                                 <a href="#">Link 1</a>
                                 <a href="#">Link 2</a>
                                 <a href="#">Link 3</a> */}
+
                                 {!currentUser || currentUser === null && (
 
                                     <ul>
@@ -104,8 +105,8 @@ const Header = props => {
                     </Link>
                                             </li>
                                             <li>
-                                                <Link to='/contact'>
-                                                    Contact
+                                                <Link to='/about'>
+                                                    Mission
                     </Link>
                                             </li>
                                             <li>

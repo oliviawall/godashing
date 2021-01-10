@@ -38,6 +38,7 @@ import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
 import Payment from './pages/Payment';
 import Cart from './pages/Cart';
+import ParalaxLanding from './pages/ParalaxLanding';
 import './default.scss';
 
 
@@ -124,6 +125,14 @@ const App = props => {
 
             <MainLayout>
               <Team />
+            </MainLayout>
+
+          )} />
+           <Route path='/ParalaxLanding'
+          render={() => (
+
+            <MainLayout>
+              <ParalaxLanding />
             </MainLayout>
 
           )} />

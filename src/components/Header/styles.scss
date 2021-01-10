@@ -90,9 +90,9 @@
   
       .logo {
         
-        width: 13.0rem;
+        width: 16.0rem;
         position: absolute;
-        top: 50%; left: 10px;
+        top: 50%; left: 16px; 
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         transform: translateY(-50%); 
@@ -161,7 +161,8 @@
           }
   
           a, span {
-            font-size: 1.8rem;
+            font-size: 2.0rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1;
             color: black;
             text-decoration: none;
