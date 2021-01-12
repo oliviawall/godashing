@@ -49,23 +49,18 @@ export default function App() {
           in-person interviews. Job applicants likewise can greatly increase the chances of getting a job/interview opportunity.
           
         </p>
-{/* // section where I want the carousel slides to transition  */}
-        {/* <section className="hero">
+{/* // section for the carousel slides  */}
+        <section className="hero">
         <Carousel />
-        </section> */}
+        </section>
 
         <section className="hero">
         <img className="parallax"
             src={gamechanger}
             style={{
-              filter: `blur(4px)`,
               transform: `translateY(${offset * 0.5}px)`
             }}
           />
-          <div className="text-wrapper">
-            <h1 className="headline">Be Bold</h1>
-            <h2 className="sub-headline">Be Confident</h2>
-          </div>
         </section>
         {/* Make space to scroll */}
         <section className="overflow" />
