@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel, Item, Caption, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // images
@@ -16,15 +17,18 @@ export default function CarouselHome() {
             <Row>
                 <Col xs={12} md={12} lg={12}>
                     <Carousel>
-                        <Carousel.Item interval={10000}>
+                        <Carousel.Item interval={5000}>
+                           <Link to='/about'>
+
                             <img
                                 className='d-block w-100'
                                 src={about}
                                 alt='First slide'
 
                             />
+                            </Link>
                             <Carousel.Caption>
-                                <h3>About Dashing</h3>
+                                {/* <h3>About Dashing</h3> */}
 
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -32,10 +36,11 @@ export default function CarouselHome() {
                             <img
                                 className='d-block w-100'
                                 src={testimonials}
+                                href='/testimonials'
                                 alt='Second Slide'
                             />
                             <Carousel.Caption>
-                                <h3>Testimonials</h3>
+                                {/* <h3>Testimonials</h3> */}
 
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -46,7 +51,7 @@ export default function CarouselHome() {
                                 alt='Third slide'
                             />
                             <Carousel.Caption>
-                                <h3>Join the momentum</h3>
+                                {/* <h3>Join the momentum</h3> */}
 
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -58,7 +63,7 @@ export default function CarouselHome() {
 
                             />
                             <Carousel.Caption>
-                                <h3>About Dashing</h3>
+                                {/* <h3>About Dashing</h3> */}
 
                             </Carousel.Caption>
                         </Carousel.Item>
@@ -70,7 +75,7 @@ export default function CarouselHome() {
 
                             />
                             <Carousel.Caption>
-                                <h3>About Dashing</h3>
+                                {/* <h3>About Dashing</h3> */}
 
                             </Carousel.Caption>
                         </Carousel.Item>

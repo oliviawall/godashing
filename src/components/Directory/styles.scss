@@ -1,3 +1,84 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 10px;
+  }
+  
+  .hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+  }
+  
+  .text-wrapper {
+    text-align: center;
+  }
+  
+  .headline {
+    font-size: 15rem;
+    color: black;
+    font-weight: 100;
+    line-height: 0.5;
+  }
+  
+  .headline::first-letter {
+    font-size: 20rem;
+  }
+  
+  .sub-headline {
+    font-size: 10rem;
+    text-transform: uppercase;
+    color: white;
+  }
+  
+  .parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .overflow {
+    height: 200vh;
+  }
+
+  #about {
+    background-color: rgba(5, 5, 1, 0.678);
+    margin: 0;
+    padding: inherit;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+  }
+
+ 
+    .carousel .thumb img {
+      width: 100% !important;
+      height: 100% !important;
+  }
+  
+  .carousel .slide img {
+      max-height: 300px;  /* change this to whatever you want */
+      width: auto;
+  }
+
 // previous directory SCSS before Carousel -->
 
 // .directory {

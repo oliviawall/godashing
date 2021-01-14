@@ -58,3 +58,24 @@
   .overflow {
     height: 200vh;
   }
+
+  #about {
+    background-color: rgba(5, 5, 1, 0.678);
+    margin: 0;
+    padding: inherit;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+  }
+
+ 
+    .carousel .thumb img {
+      width: 100% !important;
+      height: 100% !important;
+  }
+  
+  .carousel .slide img {
+      max-height: 300px;  /* change this to whatever you want */
+      width: auto;
+  }
+  
