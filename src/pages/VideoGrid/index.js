@@ -1,31 +1,47 @@
 import firebase from "firebase";
-import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
-import ResponsivePlayer from '../../components/Videos/index';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import {Table, Container, Grid, Row, Col, Image, Button} from 'react-bootstrap';
 import {ZiggeoPlayer} from 'react-ziggeo';
-
-
-
 import './styles.scss';
+// import ReactPlayer from 'react-player';
+// import ResponsivePlayer from '../../components/Videos/index';
 
 
 
-class VideoGrid extends Component {
+        const mapState = ({ user }) => ({
+            currentUser: user.currentUser
+        });
 
-    constructor (props) {
-        super (props);
-        this.state = {vids:[]}
-    }
+        const VideoGrid = () => {
+            const { currentUser } = useSelector(mapState);
+            const [email, setEmail] = useState('');
+            
 
-    render() {
-        return (
+        const userDetails = {
+            user: {currentUser},
+            id: '',
+            userName: '',
+            email: {email},
+        }
+
+        const userID = userDetails.user
+
+
+        console.log(userID)
+
+
+// class VideoGrid extends Component {
+
+//     constructor (props) {
+//         super (props);
+//         this.state = {vids:[]}
+//     }
+
+//     render() {
+    return (
             <div> 
-                <Col>
-                    <Row>
-                       
-                    </Row>
-                </Col>
             <Container className = 'gridTest'>
                     
                     <Col>
@@ -34,7 +50,10 @@ class VideoGrid extends Component {
                             ziggeo-popup
                             ziggeo-theme="minimalist"
                             ziggeo-themecolor="blue"
-                            tags= {[<userReducer/>]}>
+                            tags= {[
+                                JSON.stringify(userID)
+                            // <userReducer/>
+                             ]}>
                         </ziggeorecorder>
                         </Row>
                     </Col>
@@ -45,17 +64,17 @@ class VideoGrid extends Component {
                    theme={'mminimalist'}
                    themecolor={'blue'}
                    skipinitial={false}
-                   onPlaying={this.playing}
-                   onPaused={this.paused}
+                //    onPlaying={this.playing}
+                //    onPaused={this.paused}
                  />
 
             </Container>
             </div>
     
-        )
+        );
         
     }
      
-}
+
 
 export default VideoGrid;
