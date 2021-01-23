@@ -11,25 +11,23 @@ import './styles.scss';
 
 
         const mapState = ({ user }) => ({
-            currentUser: user.currentUser
+            currentUser: user.currentUser,
         });
 
         const VideoGrid = () => {
             const { currentUser } = useSelector(mapState);
-            const [email, setEmail] = useState('');
+            // const [email, setEmail] = useState('');
             
 
         const userDetails = {
             user: {currentUser},
-            id: '',
-            userName: '',
-            email: {email},
-        }
+            // email: setEmail (''),
+        };
 
-        const userID = userDetails.user
+        const userID = userDetails.user;
 
 
-        console.log(userID)
+        console.log(userID);
 
 
 // class VideoGrid extends Component {
@@ -40,9 +38,18 @@ import './styles.scss';
 //     }
 
 //     render() {
+
+        // const ziggeorecorder = {
+        //     theme = {minimalist},
+        //     themecolor = {blue},
+        //     tags= {[
+        //         JSON.stringify(userDetails)
+        //     // <userReducer/>
+        //     ]}
+        // }
     return (
             <div> 
-            <Container className = 'gridTest'>
+            <Container className="gridTest">
                     
                     <Col>
                         <Row>
@@ -50,11 +57,11 @@ import './styles.scss';
                             ziggeo-popup
                             ziggeo-theme="minimalist"
                             ziggeo-themecolor="blue"
-                            tags= {[
-                                JSON.stringify(userID)
+                            allowcancel="true"
+                            allowcustomupload="true"
+                            tags= {[JSON.stringify(userDetails)]}
                             // <userReducer/>
-                             ]}>
-                        </ziggeorecorder>
+                            ></ziggeorecorder>
                         </Row>
                     </Col>
                    
