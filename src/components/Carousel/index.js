@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import './styles.scss';
 
 // images
-import about from '../../assets/cover.png'
-import testimonials from '../../assets/wave.png'
-import signup from '../../assets/why.png'
-import gamechanger from '../../assets/gamechanger.png'
+import transp3 from '../../assets/transp3.png'
+import transp1 from '../../assets/transp1.png'
+import why from '../../assets/whytransp.png'
+import transp2 from '../../assets/transp2.png'
 import stats from '../../assets/stats.png'
 
 
@@ -17,67 +17,53 @@ export default function CarouselHome() {
             <Row>
                 <Col xs={12} md={12} lg={12}>
                     <Carousel>
-                        <Carousel.Item interval={5000}>
+                        <Carousel.Item interval={3000}>
                            <Link to='/about'>
 
                             <img
                                 className='d-block w-100'
-                                src={about}
+                                src={transp3}
                                 alt='First slide'
 
                             />
                             </Link>
-                            <Carousel.Caption>
-                                {/* <h3>About Dashing</h3> */}
-
-                            </Carousel.Caption>
+                           
                         </Carousel.Item>
-                        <Carousel.Item interval={4500}>
+                        <Carousel.Item interval={3000}>
                             <img
                                 className='d-block w-100'
-                                src={testimonials}
+                                src={transp1}
                                 href='/testimonials'
                                 alt='Second Slide'
                             />
-                            <Carousel.Caption>
-                                {/* <h3>Testimonials</h3> */}
-
-                            </Carousel.Caption>
+                           
                         </Carousel.Item>
-                        <Carousel.Item interval={4500}>
+                       
+                        <Carousel.Item interval={3000}>
                             <img
                                 className='d-block w-100'
-                                src={signup}
-                                alt='Third slide'
-                            />
-                            <Carousel.Caption>
-                                {/* <h3>Join the momentum</h3> */}
-
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item interval={4500}>
-                            <img
-                                className='d-block w-100'
-                                src={gamechanger}
+                                src={transp2}
                                 alt='First slide'
 
                             />
-                            <Carousel.Caption>
-                                {/* <h3>About Dashing</h3> */}
-
-                            </Carousel.Caption>
+                      
+                        </Carousel.Item> 
+                        <Carousel.Item interval={3000}>
+                            <img
+                                className='d-block w-100'
+                                src={why}
+                                alt='Third slide'
+                            />
+                           
                         </Carousel.Item>
-                        <Carousel.Item interval={4500}>
+                        <Carousel.Item interval={3000}>
                             <img
                                 className='d-block w-100'
                                 src={stats}
                                 alt='First slide'
 
                             />
-                            <Carousel.Caption>
-                                {/* <h3>About Dashing</h3> */}
-
-                            </Carousel.Caption>
+                         
                         </Carousel.Item>
                     </Carousel>
                 </Col>

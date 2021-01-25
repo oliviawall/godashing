@@ -120,16 +120,16 @@ const TheTeam = props => {
                 <div className="flip-card">
                     <div className='flip-card-inner'>
                         <div className='flip-card-front'>
-                            <img src={profilepic} alt="matt" styles="width:100%" />
-                            <h2 id='team'>Matt Gundy</h2>
+                            <img src={profilepic} alt="blake" styles="width:100%" />
+                            <h2 id='team'>Mr Hello</h2>
                         </div>
                         <div className='flip-card-back'>
                             <div className="container">
 
                                 <p className="title">Developer</p>
-                                <p>About Matt
+                                <p>Mr Hello
                         </p>
-                                <p>matt@godashing.com</p>
+                                <p>hello@godashing.com</p>
                                 <p><button className="button">Contact</button></p>
                             </div>
                         </div>
