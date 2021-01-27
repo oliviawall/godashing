@@ -35,7 +35,7 @@ const About = () => {
                                 <a href="https://www.facebook.com/DashingCo-113381857100452/" class="facebook"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="google"><i class="fa fa-google"></i></a>
                                 <a href="https://www.instagram.com/dashingco/" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                {/* <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a> */}
 
                             </Card.Body>
                         </Card>

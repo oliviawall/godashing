@@ -64,7 +64,7 @@ const TheTeam = props => {
                             <div className="container">
 
                                 <p className="title">Developer</p>
-                                <p>About Sam
+                                <p>Sam lives in the island city of Victoria, British Columbia, where he goes on adventures with his beautiful wife and four amazing kids. Sam has a deep love for all things creative, whether it be in a movie, a story, a work of art, or a beautiful design. Sam’s interest in coding was sparked when he attended the Bethel School of Technology in 2019, where he assumes he graduated at the top of his class with distinct honors. While this has actually not been confirmed, he’s never specifically been told otherwise, either. He is quite happy to go on thinking of this as fact as he codes from his favorite table at the Public Market.
                         </p>
                                 <p>sam@godashing.com</p>
                                 <p><button className="button">Contact</button></p>
@@ -83,10 +83,10 @@ const TheTeam = props => {
                         <div className='flip-card-back'>
                             <div className="container">
 
-                                <p className="title">Lead Developer</p>
-                                <p>About Olivia
-                        </p>
-                                <p>olivia@godashing.com</p>
+                            <p className="title">Lead Developer</p>
+                            <p> Hailing from the Great Canadian Rockies, Olivia grew up a lover of beauty and the outdoors. Music and the arts became a daily expression of her passion for life. Early on, she dove into the world of performance, composition, and technique, also enjoying the opportunity to teach what she loved. Whether through a paint brush, coding or putting lyrics on a page, Olivia has always been found creating something.
+                          </p>
+                            <p>olivia@godashing.com</p>
                                 <p><button className="button">Contact</button></p>
                             </div>
                         </div>
@@ -106,7 +106,7 @@ const TheTeam = props => {
                             <div className="container">
 
                                 <p className="title">Marketing &amp; Media</p>
-                                <p>About Elijah
+                                <p>Elijah is a Georgia bred boy currently residing in Northern California with his beautiful wife. He grew up playing in hardcore metal bands until his senior year of high school and then found a new passion in media and marketing. He currently owns and operates a very successful media company based out of Northern California.
                         </p>
                                 <p>elijah@godashing.com</p>
                                 <p><button className="button">Contact</button></p>

@@ -107,3 +107,7 @@ class VideoGrid extends Component {
 // ONCE THE USER VISITS THIS PAGE, DO THIS, AND THEN DO THIS
 
 export default VideoGrid;
+
+// Note to self: Olivia
+// remove dashboard "nonsubscribed content" message
+//

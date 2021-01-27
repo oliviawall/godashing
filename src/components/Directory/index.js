@@ -41,6 +41,7 @@ export default function App() {
             <div className='carousel'>
                 <Carousel />
             </div>
+
             <section className="hero">
                 <img className="parallax"
                     src={transp4}
