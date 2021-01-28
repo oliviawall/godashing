@@ -15,6 +15,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 currentUser: action.payload,
                 userErr: []
             }
+
+            // find out what's being passed in the authentication. Where am I setting the payload. 
+
         case userTypes.SUBSCRIBE_USER:
             return{
                 ...state,

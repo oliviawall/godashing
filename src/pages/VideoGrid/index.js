@@ -1,8 +1,8 @@
 import firebase from "firebase";
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Table, Container, Grid, Row, Col, Image, Button} from 'react-bootstrap';
-// import { useStore } from "react-redux";
-import {ZiggeoPlayer} from 'react-ziggeo';
+import { connect } from "react-redux";
+import {ZiggeoRecorder, ZiggeoPlayer} from 'react-ziggeo';
 // import { useSelector } from 'react-redux';
 // import { createSelector } from 'reselect';
 
@@ -10,65 +10,90 @@ import {ZiggeoPlayer} from 'react-ziggeo';
 import './styles.scss';
 
 
-class VideoGrid extends Component {
+const VideoGrid = props => {
+    const { email } = props.currentUser
+    console.log('EMAIL: ', email)
     
-    constructor (props) {
-        super();
-        this.state = ({
-            userEmail: 'soso@email.com',
-            userId: '',
-            userVideos: [],
-        })
-        this.i =0;
-    }
-    getUserInfo() {
-        // get the Users email and Id from mapToState props
-    }
-    componentDidUpdate(){
-        this.getUserInfo();
-    }
-    // in componentDidUpdate you will access the props from @ user.reducer
-    // access the currentUser prop
 
-    // componentDidMount = () => {
-    //     this.context.Redux.getState(this.state)
-    // }
-    render() {
-        return (
-            <div> 
-            <Container className = 'gridTest'>
-                    
-                    <Col>
-                        <Row>
-                        <ziggeorecorder
-                            ziggeo-popup
-                            ziggeo-theme="minimalist"
-                            ziggeo-themecolor="blue"
-                            // insert into tags user.email
-                            tags={[this.state.userEmail, this.state.userId]}
-                            >
-                        </ziggeorecorder>
-                        </Row>
-                    </Col>
-                   
-                   <ZiggeoPlayer
-                   apiKey={'a293c346773385bae50fb960f2210d2d'}
-                   video={'a741bfcb8dd370845ef2393ca614dc85'}
-                   theme={'mminimalist'}
-                   themecolor={'blue'}
-                   skipinitial={false}
-                   onPlaying={this.playing}
-                   onPaused={this.paused}
-                 />
-
-            </Container>
-            </div>
+    const [recorder, setRecorder] = useState(null);
+    const [player, setPlayer] = useState(null);
     
-        )
-        
-    }
-     
+    // useEffect(() => {
+    //     if (recorder) {
+    //         // DO stuff here
+    //         recorder.on("any_event", function (rec) { ... }, recorder);
+    //         recorder.get("attribute_name");
+    //     }
+    // }, [recorder]);
+
+    useEffect(() => {
+        if (player) {
+            // DO stuff here
+            player.on("attached", function (embedding) {}, player);
+        }
+    }, [player]);
+    
+
+    // Embedding (player/recorder instance) will be the first argument
+    const handleRecorderRecording = (embedding) => {
+        console.log('Recorder onRecording');
+    };
+    
+    const handleRecorderUploading = (embedding) => {
+        console.log('Recorder uploading');
+    };
+
+    const handlePlaying = (embedding) => {
+        console.log('it\'s playing, your action here');
+    };
+ 
+    const handlePaused = (embedding) => {
+        console.log('it\'s paused, your action when pause');
+    };
+
+    return (
+        <div> 
+        <Container className = 'gridTest'>
+                
+                <Col>
+                    <Row>
+                    <ZiggeoRecorder
+                        apiKey={'a293c346773385bae50fb960f2210d2d'}
+                        video={'f3e8dcd254cea907eb7c9c420ea90619'}
+                        ziggeo-popup
+                        ziggeo-theme="minimalist"
+                        ziggeo-themecolor="blue"
+                        // insert into tags user.email
+                        tags={email}
+                        height={180}
+                        width={320}
+                        onRef={ref => (setRecorder(ref))}
+                        >
+                    </ZiggeoRecorder>
+                    </Row>
+                </Col>
+                
+                <ZiggeoPlayer
+                    apiKey={'a293c346773385bae50fb960f2210d2d'}
+                    video={'f3e8dcd254cea907eb7c9c420ea90619'}
+                    tags={email}
+                    theme={'minimalist'}
+                    themecolor={'blue'}
+                    skipinitial={false}                  
+                    onPlaying={handlePlaying}
+                    onPaused={handlePaused}
+                    onRef={ref => (setPlayer(ref))}
+                />
+
+        </Container>
+        </div>
+
+    )
+    
 }
+
+export default VideoGrid;
+
 
 // RE: storing Ziggeo content on dashboard:
 // step 1 fetch vids
@@ -106,8 +131,16 @@ class VideoGrid extends Component {
 
 // ONCE THE USER VISITS THIS PAGE, DO THIS, AND THEN DO THIS
 
-export default VideoGrid;
+// MENTAL WALKTHROUGH OF CURRENT PROCESS ( 01/27/21 ) - OLIVIA //
 
-// Note to self: Olivia
-// remove dashboard "nonsubscribed content" message
-//
+// [ ] SHOULD BE ABLE TO VIEW RECORDED VIDEO ON THE VIDEOGRID PAGE AFTER RECORDING: 
+
+// ----------- POINTS NOTICED ALONG THE WAY ------------------ //
+// [ ] CONSOLE LOG IS NOT RETURNING CURRENT USER EVEN THOUGH LOGGED IN
+// [ ] UPON RECORDING, I RETRIEVE NO PERSONAL USER DATA IN ZIGGEO
+// [ ] MY TAGS IN VIDEO RECORDER ON VSCODE ARE NOT RETURNING A UNIQUE IDENTIFIER ( SUCH AS USER EMAIL ) 
+// [ ] DO I NEED TO UPDATE MY REDUX USER.REDUCER OR SOMETHING IN USER.ACTIONS
+// [ ] ARE MY HOC OR MY CUSTOM HOOKS A PART OF PASSING CURRENT USER DATA
+// [ ] Ziggo's docs on tags: 
+// [ ] "Tags [ array ]
+// [ ]  tags (keywords) to associate with newly created video"

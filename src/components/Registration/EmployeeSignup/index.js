@@ -156,3 +156,7 @@ const EmployeeSignup = props => {
 
 
 export default EmployeeSignup;
+
+
+// Note to self: Olivia
+// remove dashboard "nonsubscribed content" message until subscriptions are complete
