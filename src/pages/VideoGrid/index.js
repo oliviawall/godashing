@@ -1,30 +1,43 @@
 import firebase from "firebase";
 import React, { useState, useEffect } from 'react';
+import Link from 'react-router-dom';
 import {Table, Container, Grid, Row, Col, Image, Button} from 'react-bootstrap';
-import { connect } from "react-redux";
+import {API_KEY, VIDEO_TOKEN, videos } from '../../components/ZiggeoPlayer/constants';
 import {ZiggeoRecorder, ZiggeoPlayer} from 'react-ziggeo';
+// import { connect } from "react-redux";
+// import { NavLink } from "react-router-dom";
+
+// import { video_list } from '../../components/ZiggeoPlayer/constants';
+
+
 // import { useSelector } from 'react-redux';
 // import { createSelector } from 'reselect';
-
-
 import './styles.scss';
 
 
+
 const VideoGrid = props => {
-    const { email } = props.currentUser
+    const { email} = props.currentUser
     console.log('EMAIL: ', email)
-    
 
     const [recorder, setRecorder] = useState(null);
     const [player, setPlayer] = useState(null);
+
+    // const response = ziggeo_app.videos.index(videos, {"server_auth": API_KEY});
+
+    // useEffect ( () => {
+    //     fetch ('/v1/applications/a293c346773385bae50fb960f2210d2/videos/')
+    //     .then (response.success)
+    // }, []);
+        
     
     // useEffect(() => {
     //     if (recorder) {
     //         // DO stuff here
     //         recorder.on("any_event", function (rec) { ... }, recorder);
     //         recorder.get("attribute_name");
-    //     }
-    // }, [recorder]);
+    //     
+    // }, [recorder]);`
 
     useEffect(() => {
         if (player) {
@@ -51,20 +64,24 @@ const VideoGrid = props => {
         console.log('it\'s paused, your action when pause');
     };
 
+   
+
+
     return (
         <div> 
+        <video_list/>
+       
         <Container className = 'gridTest'>
                 
                 <Col>
                     <Row>
                     <ZiggeoRecorder
-                        apiKey={'a293c346773385bae50fb960f2210d2d'}
-                        video={'f3e8dcd254cea907eb7c9c420ea90619'}
+                        apiKey={API_KEY}
                         ziggeo-popup
                         ziggeo-theme="minimalist"
                         ziggeo-themecolor="blue"
                         // insert into tags user.email
-                        tags={email}
+                        tags={[email]}
                         height={180}
                         width={320}
                         onRef={ref => (setRecorder(ref))}
@@ -72,18 +89,31 @@ const VideoGrid = props => {
                     </ZiggeoRecorder>
                     </Row>
                 </Col>
-                
-                <ZiggeoPlayer
-                    apiKey={'a293c346773385bae50fb960f2210d2d'}
-                    video={'f3e8dcd254cea907eb7c9c420ea90619'}
-                    tags={email}
-                    theme={'minimalist'}
-                    themecolor={'blue'}
-                    skipinitial={false}                  
-                    onPlaying={handlePlaying}
-                    onPaused={handlePaused}
-                    onRef={ref => (setPlayer(ref))}
-                />
+                <Col>
+                <h1>My Video Resumes:</h1>
+                <ul>
+                    {
+                        videos.length > 0 && videos.map(({video}, index) =>
+                            <ul key={index}>
+                                    <ZiggeoPlayer 
+                                    apiKey={API_KEY}
+                                    video={video} 
+                                    height={240} 
+                                    width={380}
+                                    tags={[email]}
+                                    theme={'minimalist'}
+                                    themecolor={'blue'}
+                                    skipinitial={false}                  
+                                    onPlaying={handlePlaying}
+                                    onPaused={handlePaused}
+                                    onRef={ref => (setPlayer(ref))} />
+                            </ul>
+                            
+                        )
+                    }
+                </ul>
+                </Col>
+            
 
         </Container>
         </div>

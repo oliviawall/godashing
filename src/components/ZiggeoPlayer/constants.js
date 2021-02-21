@@ -1,5 +1,17 @@
 import { string, number, bool, arrayOf, func, array, object, oneOfType, any } from 'prop-types';
 
+export const API_KEY = 'a293c346773385bae50fb960f2210d2d';
+export const VIDEO_TOKEN = 'eb6c0ea4f9e69746c342f40703f76e30';
+export const VIDEO_TOKEN_2 = 'eb6c0ea4f9e69746c342f40703f76e30';
+export const VIDEO_TOKEN_3 = 'eb6c0ea4f9e69746c342f40703f76e30';
+export const videos = [
+    {video: VIDEO_TOKEN},
+    {video: VIDEO_TOKEN_2},
+    {video: VIDEO_TOKEN_3}
+
+];
+
+
 // ####################### Player/Recorder Attributes #############################
 // When using HTML embed methods, all parameters should be prefixed with ziggeo-
 // https://ziggeo.com/docs/sdks/javascript/browser-integration/parameters#javascript-revision=v1-r29&javascript-version=v2
@@ -385,3 +397,39 @@ export const ziggeoPlayerApplicationOptions = {
 
 export const screenRecorderOptions = {
 };
+// export const video_list = 
+//     app.videos.index({tags:"email"}).success(
+
+// 	function(video_list){
+
+// 		for(i = 0, l = video_list.length; i < l; i++)
+
+// 			{
+
+		
+// 		var player_container = document.createElement("div");
+		
+		
+// 		var player = new ZiggeoApi.V2.Player({
+// 									element: player_container,
+// 									attrs: {
+										
+// 										theme: "modern",
+// 										themecolor: "red",
+// 										video: video_list[i].token
+// 									}
+// 								});
+// 		document.getElementById("V2_players").appendChild(player_container);
+
+		
+
+// 		player.activate();
+
+		
+			
+// 			}
+
+				
+
+//     });
+
