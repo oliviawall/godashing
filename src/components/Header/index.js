@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutUserStart } from './../../redux/User/user.actions';
+import { loggedIn } from './../HeaderLoggedIn/index';
+import { loggedOut } from './../HeaderLoggedOut/index';
 import './styles.scss';
 import { Link } from 'react-router-dom';
 
@@ -24,11 +26,12 @@ const Header = props => {
     useEffect(() => {
         console.log("currentUser:\n==== \=======\n", currentUser)
 
-        if (currentUser) { setSubscription(true) }
+        if (currentUser) { setSubscription(true) }//<loggedIn/> takes this place
 
         else if (!currentUser) {
             // currentUser = false;
             setSubscription(false)
+            //<loggedOut/>
         }
     })
 
@@ -57,7 +60,7 @@ const Header = props => {
                     </span>
                             </li>
                         </ul>
-                    )}
+                    )} 
 
                    
 
@@ -98,13 +101,13 @@ const Header = props => {
                                    <ul> <li>
                                         <Link to='/employeeregistration'>
                                             Job Seekers
-                    </Link>
+                                        </Link>
                                     </li>
-                                        <li>
+                                             <li>
                                             
                                                 <Link to='/employerregistration'>
                                                     Hiring Managers
-                    </Link>
+                                                </Link>
                                             </li>
                                             <li>
                                                 <Link to='/about'>
