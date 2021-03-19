@@ -3,7 +3,7 @@ import { CardElement, Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import './styles.scss';
 
-const stripePromise = loadStripe("pk_test_51HdMs9HOAxUNfXshPhVqx5DaOR8u481inkzpmMVM7MEJLkj98gwzi441XDhamgHFg1s3DckjCwsbqQfQhqB7LZb800O7RC4osH");
+const stripePromise = loadStripe("pk_test_51*******");
 
 
 const CARD_ELEMENT_OPTIONS = {
