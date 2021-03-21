@@ -6,12 +6,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 // stripe
-import {useElements, CardElement, Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 // Util imports
 import {makeStyles} from '@material-ui/core/styles';
 // Custom Components
-import CardInput from './CardInput';
+import CardInput from '../CardInput';
 
 const useStyles = makeStyles({
   root: {
@@ -34,17 +33,15 @@ const useStyles = makeStyles({
   },
 });
 
-const stripe = loadStripe('pk_test_51HdMs9HOAxUNfXshPhVqx5DaOR8u481inkzpmMVM7MEJLkj98gwzi441XDhamgHFg1s3DckjCwsbqQfQhqB7LZb800O7RC4osH');
-
-function HomePageComponent() {
+function PaymentPage() {
   const classes = useStyles();
   // State
   const [email, setEmail] = useState('');
 
-  
+  const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (event) => {
+  const handleSubmitPay = async (event) => {
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
@@ -57,7 +54,6 @@ function HomePageComponent() {
 
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        type: 'card',
         card: elements.getElement(CardElement),
         billing_details: {
           email: email,
@@ -83,46 +79,47 @@ function HomePageComponent() {
 
   const handleSubmitSub = async (event) => {
     if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
-    const result = await (await stripe).createPaymentMethod({
+    const result = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
       billing_details: {
         email: email,
       },
     });
-  
-    if (result.error) {
-      console.log(result.error.message)
-      // Show error in payment form
-    } else {
-      const payload = {
-        email: email,
-        payment_method: result.paymentMethod.id,
-      }
-      // Otherwise send paymentMethod.id to your server
-      const res = await axios.post('http://localhost:3000/sub', payload)
 
-      const { client_secret, status} = res.data;
+    if (result.error) {
+      console.log(result.error.message);
+    } else {
+      const res = await axios.post('http://localhost:3000/sub', {'payment_method': result.paymentMethod.id, 'email': email});
+      // eslint-disable-next-line camelcase
+      const {client_secret, status} = res.data;
 
       if (status === 'requires_action') {
-        (await stripe).confirmCardPayment(client_secret).then(function(result) {
+        stripe.confirmCardPayment(client_secret).then(function(result) {
           if (result.error) {
-            console.log(result.error.message)
+            console.log('There was an issue!');
+            console.log(result.error);
+            // Display error message in your UI.
+            // The card was declined (i.e. insufficient funds, card has expired, etc)
           } else {
-            console.log('Hell yeah, you got that sub money!')
+            console.log('You got the money!');
+            // Show a success message to your customer
           }
         });
       } else {
-        console.log('Hell yeah, you got that sub money!')
+        console.log('You got the money!');
+        // No additional information was needed
+        // Show a success message to your customer
       }
     }
   };
-      
-  return (
 
+  return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
         <TextField
@@ -139,7 +136,7 @@ function HomePageComponent() {
         />
         <CardInput />
         <div className={classes.div}>
-          <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmit}>
+          <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmitPay}>
             Pay
           </Button>
           <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmitSub}>
@@ -147,16 +144,8 @@ function HomePageComponent() {
           </Button>
         </div>
       </CardContent>
-    </Card>  
+    </Card>
   );
 }
 
-const LandingPage = props => {
-    return (
-        <Elements stripe={stripe}>
-            <HomePageComponent/>
-        </Elements>
-    )
-}
-
-export default LandingPage;
+export default PaymentPage;

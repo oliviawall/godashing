@@ -3,13 +3,16 @@ import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
 
+// Stripe
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
 // components 
 import AdminToolbar from './components/AdminToolbar';
-import Paypal from './components/Payment/Paypal';
-import CheckoutForm from './components/Payment/Stripe/CardInput';
 import Carousel from './components/Carousel';
-import CardInput from './components/Payment/Stripe/CardInput';
-
+// import Paypal from './components/Payment/Paypal';
+// import CheckoutForm from './components/Payment/Stripe/CardInput';
+// import CardInput from './components/Payment/Stripe/CardInput';
 // import ProtectedRoute from './components/ProtectedRoute';
 
 // hoc
@@ -36,12 +39,13 @@ import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import VideoGrid from './pages/VideoGrid';
-import Payment from './pages/Payment';
 import Cart from './pages/Cart';
 import ParalaxLanding from './pages/ParalaxLanding';
+import PaymentPage from './components/PaymentPage';
+
 import './default.scss';
 
-
+const stripePromise = loadStripe(process.env.STRIPE_PUB_KEY);
 
 const App = props => {
   const dispatch = useDispatch();
@@ -62,6 +66,12 @@ const App = props => {
           </HomepageLayout>
         )} />
 
+        <Route exact path='/pay' render={() => (
+          <Elements stripe={stripePromise}>
+          <PaymentPage />
+        </Elements>
+        )} />
+
         <Route exact path="/search" render={() => (
           <MainLayout>
             <Search />
@@ -70,11 +80,6 @@ const App = props => {
         <Route path="/search/:filterType" render={() => (
           <MainLayout>
             <Search />
-          </MainLayout>
-        )} />
-        <Route path='/payment' render={() => (
-          <MainLayout>
-            <Payment />
           </MainLayout>
         )} />
         <Route path='/employeeregistration' render={() => (
@@ -148,23 +153,23 @@ const App = props => {
               <Contact />
             </MainLayout>
           )} />
-        <Route path='/paypal'
+        {/* <Route path='/paypal'
           render={() => (
             <MainLayout>
               <Paypal />
             </MainLayout>
-          )} />
+          )} /> */}
         <Route path="/cart" render={() => (
           <MainLayout>
             <Cart />
           </MainLayout>
         )} />
-        <Route path='/stripe'
+        {/* <Route path='/stripe'
           render={() => (
             <MainLayout>
               <CardInput />
             </MainLayout>
-          )} />
+          )} /> */}
         <Route path='/admin' render={() => (
           <WithAdminAuth>
             <AdminLayout>
