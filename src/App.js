@@ -12,7 +12,7 @@ import AdminToolbar from './components/AdminToolbar';
 import Carousel from './components/Carousel';
 // import Paypal from './components/Payment/Paypal';
 // import CheckoutForm from './components/Payment/Stripe/CardInput';
-// import CardInput from './components/Payment/Stripe/CardInput';
+// import CardInput from './components/CardInput';
 // import ProtectedRoute from './components/ProtectedRoute';
 
 // hoc
@@ -45,7 +45,7 @@ import PaymentPage from './components/PaymentPage';
 
 import './default.scss';
 
-const stripePromise = loadStripe(process.env.STRIPE_PUB_KEY);
+const stripePromise = loadStripe("pk_test_51HdMs9HOAxUNfXshPhVqx5DaOR8u481inkzpmMVM7MEJLkj98gwzi441XDhamgHFg1s3DckjCwsbqQfQhqB7LZb800O7RC4osH");
 
 const App = props => {
   const dispatch = useDispatch();

@@ -10,8 +10,7 @@ import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 // Util imports
 import {makeStyles} from '@material-ui/core/styles';
 // Custom Components
-import CardInput from '../CardInput';
-
+import CardInput from './CardInput';
 
 const useStyles = makeStyles({
   root: {
@@ -34,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-function PaymentPage() {
+function HomePage() {
   const classes = useStyles();
   // State
   const [email, setEmail] = useState('');
@@ -149,4 +148,4 @@ function PaymentPage() {
   );
 }
 
-export default PaymentPage;
+export default HomePage;
