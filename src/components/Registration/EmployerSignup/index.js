@@ -26,7 +26,7 @@ const EmployerSignup = props => {
     useEffect(() => {
         if (currentUser) {
             reset();
-            history.push('/payment');
+            history.push('/pay');
         }
 
     }, [currentUser]);
