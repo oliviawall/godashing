@@ -1,17 +1,10 @@
-import firebase from "firebase";
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Link from 'react-router-dom';
 import {Table, Container, Grid, Row, Col, Image, Button} from 'react-bootstrap';
-import {API_KEY, VIDEO_TOKEN, videos } from '../../components/ZiggeoPlayer/constants';
 import {ZiggeoRecorder, ZiggeoPlayer} from 'react-ziggeo';
-// import { connect } from "react-redux";
-// import { NavLink } from "react-router-dom";
-
-// import { video_list } from '../../components/ZiggeoPlayer/constants';
-
-
-// import { useSelector } from 'react-redux';
-// import { createSelector } from 'reselect';
+import FilterVideos from '../../components/ZiggeoPlayer/filter-videos.js';
+import RecordVideo from '../../components/ZiggeoPlayer/record-video.js';
+import ViewVideos from '../../components/ZiggeoPlayer/view-videos.js';
 import './styles.scss';
 
 
@@ -23,13 +16,6 @@ const VideoGrid = props => {
     const [recorder, setRecorder] = useState(null);
     const [player, setPlayer] = useState(null);
 
-    // const response = ziggeo_app.videos.index(videos, {"server_auth": API_KEY});
-
-    // useEffect ( () => {
-    //     fetch ('/v1/applications/a293c346773385bae50fb960f2210d2/videos/')
-    //     .then (response.success)
-    // }, []);
-        
     
     // useEffect(() => {
     //     if (recorder) {
@@ -75,22 +61,12 @@ const VideoGrid = props => {
                 
                 <Col>
                     <Row>
-                    <ZiggeoRecorder
-                        apiKey={API_KEY}
-                        ziggeo-popup
-                        ziggeo-theme="minimalist"
-                        ziggeo-themecolor="blue"
-                        // insert into tags user.email
-                        tags={[email]}
-                        height={180}
-                        width={320}
-                        onRef={ref => (setRecorder(ref))}
-                        >
-                    </ZiggeoRecorder>
+                        <RecordVideo user={email}/>
                     </Row>
                 </Col>
-                <Col>
-                <h1>My Video Resumes:</h1>
+                 <Col>
+                <Row>
+                {/* <h1>My Video Resumes:</h1>
                 <ul>
                     {
                         videos.length > 0 && videos.map(({video}, index) =>
@@ -111,9 +87,14 @@ const VideoGrid = props => {
                             
                         )
                     }
-                </ul>
+                </ul> */}
+                <FilterVideos user={email} />
+                {/* <ViewVideos/> */}
+                
+                </Row>
+                
                 </Col>
-            
+             
 
         </Container>
         </div>
