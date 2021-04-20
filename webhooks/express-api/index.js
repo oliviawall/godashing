@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const {stripe} = stripeAPIKey;
 const stripe = require('stripe')('pk_test_51HdMs9HOAxUNfXshPhVqx5DaOR8u481inkzpmMVM7MEJLkj98gwzi441XDhamgHFg1s3DckjCwsbqQfQhqB7LZb800O7RC4osH');
 
 const endpointSecret = 'whsec_hRAYniBJJna2JneG7etG5SMw0yYuGdbd';

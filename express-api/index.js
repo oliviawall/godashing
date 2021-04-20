@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const stripe = require('stripe')('pk_test_51HdMs9HOAxUNfXshPhVqx5DaOR8u481inkzpmMVM7MEJLkj98gwzi441XDhamgHFg1s3DckjCwsbqQfQhqB7LZb800O7RC4osH');
+const stripe = require('stripe')('sk_test_51HdMs9HOAxUNfXsh9n6S08wbkI0gEjw5NulfSDM1SbNxdL0f2PdjsEqgEBgieUjAAnzLv2X5e4KvzMdb8D1Ehyzc00lZ35GWka');
 
 const port = 3000
 
@@ -41,6 +41,7 @@ app.post('/sub', async (req, res) => {
     invoice_settings: {
       default_payment_method: payment_method,
     },
+    
   });
 
   const subscription = await stripe.subscriptions.create({
