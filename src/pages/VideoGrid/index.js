@@ -54,49 +54,19 @@ const VideoGrid = props => {
 
 
     return (
-        <div> 
-        <video_list/>
-       
-        <Container className = 'gridTest'>
+        <div > 
+        {/* <video_list/> */}
+            
                 
-                <Col>
-                    <Row>
-                        <RecordVideo user={email}/>
-                    </Row>
-                </Col>
-                 <Col>
-                <Row>
-                {/* <h1>My Video Resumes:</h1>
-                <ul>
-                    {
-                        videos.length > 0 && videos.map(({video}, index) =>
-                            <ul key={index}>
-                                    <ZiggeoPlayer 
-                                    apiKey={API_KEY}
-                                    video={video} 
-                                    height={240} 
-                                    width={380}
-                                    tags={[email]}
-                                    theme={'minimalist'}
-                                    themecolor={'blue'}
-                                    skipinitial={false}                  
-                                    onPlaying={handlePlaying}
-                                    onPaused={handlePaused}
-                                    onRef={ref => (setPlayer(ref))} />
-                            </ul>
-                            
-                        )
-                    }
-                </ul> */}
-                <FilterVideos user={email} />
-                {/* <ViewVideos/> */}
+                    
+            <RecordVideo user={email}/>
+        
+    
+            <FilterVideos  user={email} /> 
+                    
                 
-                </Row>
                 
-                </Col>
-             
-
-        </Container>
+           
         </div>
 
     )

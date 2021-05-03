@@ -133,3 +133,33 @@ html {
   .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
   }
+  #root {
+    height: 100vh
+  }
+ 
+  div.video-list {
+    cursor: pointer;
+    display: grid;
+    gap: 50px;
+
+  }
+  div.video-list:hover {
+    color:#f1faee;
+    background-color: #457b9d;
+  }
+  
+  div.video-player {
+    border: 1px solid purple;
+  }
+  
+  .active {
+    color: blue;
+  }
+  
+  #grid {
+    display:inline-grid;
+    row-gap: 10px;
+    column-gap: 50px;
+    grid-template-columns: auto auto;
+    padding: auto;
+  }

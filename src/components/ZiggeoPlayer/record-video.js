@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
+
 import { ZiggeoRecorder } from 'react-ziggeo';
 
 const API_KEY = 'a293c346773385bae50fb960f2210d2d';
@@ -36,9 +37,9 @@ export default class RecordVideo extends React.Component {
                     
                     {/* Main Content */}
                     <div className="col-md-12">
-                        <div className="col-12 mt-4 d-flex justify-content-center">
+                        {/* <div className="col-12 mt-4 d-flex justify-content-center">
                              <h3>Video Recorder</h3>
-                        </div>
+                        </div> */}
                         <div className="col-12 mt-4 d-flex justify-content-center">
                             {
                                <VideoPlayer user={this.props.user} api_key={API_KEY} tags={tag} />

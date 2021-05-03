@@ -33,9 +33,10 @@ const Dashboard = props => {
     {
         return (
             <h2>
-                <VideoGrid currentUser={currentUser} />
+                
                 My Awesome Dashboard
-            </h2>
+            </h2>,
+            <VideoGrid currentUser={currentUser} />
         )
     }
     else {

@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { ZiggeoPlayer } from 'react-ziggeo';
 
-const API_KEY = 'a293c346773385bae50fb960f2210d2d';
 
+const API_KEY = 'a293c346773385bae50fb960f2210d2d';
 
 const VideoPlayer = ({ video_token, api_key, user}) => {
 
     return (
-        <div className="video-player">
+        <div className="video-player" >
             <ZiggeoPlayer
             apiKey={ api_key }
             video={ video_token }
@@ -73,35 +73,52 @@ export default class FilterVideos extends React.Component {
     render(){
         const { tag } = this.state;
         return (
-             <div className="container-fluid">
+            <div className="container-fluid">
+                <div className="row" style={{ width: '100%', height: '100%' }}>
+                      
+                      
+                      <div className="col-sm mt-4 d-flex justify-content-center">
+                          {
+                              console.log("USER: ", this.props.user),
+                              this.state.selected ? <VideoPlayer  tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag} /> : 'Select Video:'
+                             
+                          }
+                             
+                      </div>
+                  </div>
+                  <br></br>
                 {/* SideBar */}
                  <div className="row" style={{ width: '100%', height: '100%' }}>
-                    <div className="col-md-2 p-1" style={{ borderRight: '1px solid black' }}>
-                        <h5 className="mb-4 mt-2" style={{textAlign: 'center'}}></h5>
+                    <div className="col-lg p-1" id="grid" style={{ borderRight: '' }}>
+                        
                         {
                             // Filtered Video List
                             this.state.filtered_video_list.map( (video, index) => {
                                 let isActive = this.state.video_position === index ? 'active' : ''
-                                return <div key={index} className={"video-list p-2 " + isActive} onClick={ this.videoSelectionHandler.bind(this, video, index)} style={{borderBottom: '1px solid grey', textAlign: 'center'}}>Video by { video.tags[0] }</div>
+                                return <div key={index} className={"video-list p-1 "+ isActive} onClick={ this.videoSelectionHandler.bind(this, video, index)} style={{border: '1px solid purple'}}>{ video.tags[0], "Resume"}</div>
                             })
                         }
-                    </div>
-                    {/* Main Content */}
-                    <div className="col-md-10">
-                        <div className="col-12 mt-4 d-flex justify-content-center">
-                            <h3>Video Player</h3>
-                        </div>
-                        <div className="col-12 mt-4 d-flex justify-content-center">
-                            {
-                                console.log("USER: ", this.props.user),
-                                this.state.selected ? <VideoPlayer tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag} /> : 'Select Video:'
-                               
-                            }
-                            
-                        </div>
-                    </div>
+                  
                 </div>
-             </div>
+            </div> 
+            
+                {/* <div className="row" style={{ width: '100%', height: '100%' }}>
+                      
+                      <br></br>
+                      <div className="col-sm mt-4 d-flex justify-content-center">
+                          {
+                              console.log("USER: ", this.props.user),
+                              this.state.selected ? <VideoPlayer  tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag} /> : 'Select Video:'
+                             
+                          }
+                             
+                      </div>
+                  </div> */}
+
+                    {/* Main Content */}
+                 
+                </div>
+             
         )
     }
 }
