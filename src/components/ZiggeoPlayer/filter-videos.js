@@ -82,7 +82,7 @@ export default class FilterVideos extends React.Component {
                             // Filtered Video List
                             this.state.filtered_video_list.map( (video, index) => {
                                 let isActive = this.state.video_position === index ? 'active' : ''
-                                return <div key={index} className={"video-list p-2 " + isActive} onClick={ this.videoSelectionHandler.bind(this, video, index)} style={{borderBottom: '1px solid grey', textAlign: 'center'}}>Video by { video.tags[0] }</div>
+                                return <div key={index} className={"video-list p-2 " + isActive} onClick={ this.videoSelectionHandler.bind(this, video, index)} style={{borderBottom: '1px solid grey', textAlign: 'center'}}> { video.tags[0] } content</div>
                             })
                         }
                     </div>
