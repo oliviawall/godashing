@@ -121,13 +121,13 @@ const TheTeam = props => {
                     <div className='flip-card-inner'>
                         <div className='flip-card-front'>
                             <img src={profilepic} alt="blake" styles="width:100%" />
-                            <h2 id='team'>Mr Hello</h2>
+                            <h2 id='team'>Blake Wood</h2>
                         </div>
                         <div className='flip-card-back'>
                             <div className="container">
 
                                 <p className="title">Developer</p>
-                                <p>Mr Hello
+                                <p>Blake Wood
                         </p>
                                 <p>hello@godashing.com</p>
                                 <p><button className="button">Contact</button></p>

@@ -108,12 +108,12 @@ function PaymentPage() {
             // Display error message in your UI.
             // The card was declined (i.e. insufficient funds, card has expired, etc)
           } else {
-            console.log('Payment succeeded!');
+            console.log('Payment successful!');
             // Show a success message to your customer
           }
         });
       } else {
-        console.log('You got the money!');
+        console.log('Payment successful!');
         // No additional information was needed
         // Show a success message to your customer
       }
