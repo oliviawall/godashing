@@ -17,6 +17,7 @@ const VideoPlayer = ({ video_token, api_key, user}) => {
             tags={[user]}
             
             
+            
             ></ZiggeoPlayer>
         </div>
     )
@@ -80,7 +81,7 @@ export default class FilterVideos extends React.Component {
                       <div className="col-sm mt-4 d-flex justify-content-center">
                           {
                               console.log("USER: ", this.props.user),
-                              this.state.selected ? <VideoPlayer  tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag} /> : 'Select Video:'
+                              this.state.selected ? <VideoPlayer  tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag}/> : 'My Resumes:'
                              
                           }
                              
@@ -89,7 +90,7 @@ export default class FilterVideos extends React.Component {
                   <br></br>
                 {/* SideBar */}
                  <div className="row" style={{ width: '100%', height: '100%' }}>
-                    <div className="col-lg p-1" id="grid" style={{ borderRight: '' }}>
+                    <div className="col-sm p-1" id="grid" >
                         
                         {
                             // Filtered Video List

@@ -139,8 +139,7 @@ html {
  
   div.video-list {
     cursor: pointer;
-    display: grid;
-    gap: 50px;
+    border-radius: 10px;
 
   }
   div.video-list:hover {
@@ -148,9 +147,7 @@ html {
     background-color: #8ec6e9;
   }
   
-  div.video-player {
-    border: 1px solid purple;
-  }
+  
   
   .active {
     color: rgb(17, 158, 104);
@@ -158,8 +155,10 @@ html {
   
   #grid {
     display:inline-grid;
-    row-gap: 10px;
+    direction: flex;
+    justify-content: center;
+    row-gap: 25px;
     column-gap: 50px;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto;
     padding: auto;
   }
