@@ -10,6 +10,7 @@ const VideoPlayer = ({ api_key , user}) => {
     return (
         <div className="record-player">
             <ZiggeoRecorder
+                custom-covershots={[true]}
                 apiKey={ api_key }
                 height={ 300 }
                 width={ 400 }

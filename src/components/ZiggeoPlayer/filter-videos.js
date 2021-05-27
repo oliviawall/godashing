@@ -10,6 +10,8 @@ const VideoPlayer = ({ video_token, api_key, user}) => {
     return (
         <div className="video-player" >
             <ZiggeoPlayer
+            
+            sharevideo={['facebook','twitter']}
             apiKey={ api_key }
             video={ video_token }
             height={ 300 }
@@ -78,7 +80,7 @@ export default class FilterVideos extends React.Component {
                 <div className="row" style={{ width: '100%', height: '100%' }}>
                       
                       
-                      <div className="col-sm mt-4 d-flex justify-content-center">
+                      <div className="col-sm mt-4 d-flex justify-content-center" id="ziggeoplayer">
                           {
                               console.log("USER: ", this.props.user),
                               this.state.selected ? <VideoPlayer  tags={this.props.user } api_key={API_KEY} video_token={ this.state.video_token } tag={tag}/> : 'My Resumes:'
