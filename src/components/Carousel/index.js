@@ -18,16 +18,15 @@ export default function CarouselHome() {
                 <Col xs={12} md={12} lg={12}>
                     <Carousel>
                         <Carousel.Item interval={3000}>
-                           <Link to='/about'>
+                            <Link to='/about'>
 
-                            <img
-                                className='d-block w-100'
-                                src={transp3}
-                                alt='First slide'
+                                <img
+                                    className='d-block w-100'
+                                    src={transp3}
+                                    alt='First slide'
 
-                            />
+                                />
                             </Link>
-                           
                         </Carousel.Item>
                         <Carousel.Item interval={3000}>
                             <img
@@ -36,9 +35,8 @@ export default function CarouselHome() {
                                 href='/testimonials'
                                 alt='Second Slide'
                             />
-                           
+                        
                         </Carousel.Item>
-                       
                         <Carousel.Item interval={3000}>
                             <img
                                 className='d-block w-100'
@@ -46,7 +44,7 @@ export default function CarouselHome() {
                                 alt='First slide'
 
                             />
-                      
+                    
                         </Carousel.Item> 
                         <Carousel.Item interval={3000}>
                             <img
@@ -54,7 +52,7 @@ export default function CarouselHome() {
                                 src={why}
                                 alt='Third slide'
                             />
-                           
+                        
                         </Carousel.Item>
                         <Carousel.Item interval={3000}>
                             <img
@@ -63,12 +61,10 @@ export default function CarouselHome() {
                                 alt='First slide'
 
                             />
-                         
                         </Carousel.Item>
                     </Carousel>
                 </Col>
             </Row>
-
         </div>
     );
 }

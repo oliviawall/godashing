@@ -69,13 +69,13 @@ const Header = props => {
                                     <ul>
                                         <li>
                                             <Link to='/employeeregistration'>
-                                                Job Seekers
+                                                Personal
                     </Link>
                                         </li>
                                         <li>
                                             <li>
                                                 <Link to='/employerregistration'>
-                                                    Businesses
+                                                    Business
                     </Link>
                                             </li>
                                             <Link to='/login'>
@@ -100,13 +100,13 @@ const Header = props => {
                                    <div className='navbar'>
                                    <ul> <li>
                                         <Link to='/employeeregistration'>
-                                            Job Seekers
+                                            Personal
                                         </Link>
                                     </li>
                                              <li>
                                             
                                                 <Link to='/employerregistration'>
-                                                    Hiring Managers
+                                                    Business
                                                 </Link>
                                             </li>
                                             <li>

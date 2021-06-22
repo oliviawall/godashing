@@ -26,3 +26,23 @@
      }
   }
 }
+
+// Adds padding between Personal Signup form & "Already have an account..."
+.add-space {
+    padding-top: 2rem;
+}
+
+// "Already have an account..." Login link styling
+.login-link {
+    background-color: black;
+    color: white;
+    padding: .8rem;
+    margin-left: 1rem;
+    border-radius: 5%;
+}
+
+// "Already have an account..." Login link styling on mouse hover
+.login-link:hover {
+    text-decoration: none;
+    color: rgb(49, 49, 49);
+}

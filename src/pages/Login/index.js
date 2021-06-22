@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.scss';
-import SignIn from './../../components/SignIn';
+import LogIn from './../../components/LogIn';
 
 const Login = props => {
   return (
 
-           <SignIn />  
+    <LogIn />  
 
   );
 
