@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { signUpUserStart } from '../../../redux/User/user.actions';
 import './styles.scss';
 
@@ -148,6 +148,12 @@ const EmployeeSignup = props => {
                     </Button>
 
                 </form>
+
+                {/* Already have an account? buttons */} 
+                <p className='links add-space'>
+                    Already have an account? 
+                    <Link className="login-link" to='/login'>LOGIN</Link>
+                </p>
             </div>
         </AuthWrapper>
 
