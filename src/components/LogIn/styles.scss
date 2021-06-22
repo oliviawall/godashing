@@ -1,0 +1,73 @@
+.socialSignin {
+    margin: 3rem auto 0;
+}
+
+.links {
+    display: block;
+    width: 100%;
+    margin: 1.5rem auto 0;
+    font-size: small;
+}
+
+a {
+    color: black;
+}
+
+// Creates a black line between "Reset Password" & "Don't have an account..."
+.div-line {
+    border-bottom: black solid 1px;
+    width: 20%;
+    margin: auto;
+    padding-top: 1.6rem;
+}
+
+// "Don't have an account..." Sign Up link styling
+.signup-link {
+    background-color: black;
+    color: white;
+    padding: .9rem;
+    border-radius: 5%;
+}
+
+// "Don't have an account..." Sign Up link styling on mouse hover
+.signup-link:hover {
+    text-decoration: none;
+    color: rgb(49, 49, 49);
+}
+
+// Adds some positioning to Sign Up Links (larger screens)
+.links-1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+// Adds some positioning to Sign Up Links (smaller screens)
+.links-2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+// Adds a little space on the OR span between the two Sign Up options
+span {
+    padding-left: .9rem;
+    padding-right: .9rem;
+}
+
+// Adds padding to the OR p-tag on smaller screens
+.p-or {
+    padding: .7rem;
+}
+
+// PERSONAL/BUSINESS btns on larger screens
+@media screen and (min-width: 351px) {
+    .links-2 {
+        display: none;
+    }
+}
+
+// PERSONAL/BUSINESS btns on smaller screens
+@media screen and (max-width: 350px) {
+  .links-1 {
+      display: none;
+  }
+}
